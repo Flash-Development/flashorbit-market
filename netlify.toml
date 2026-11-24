@@ -1,0 +1,5 @@
+[build.environment]
+  # These env vars hold non-sensitive values ("flash", "3000", a public sender
+  # address) that naturally appear in source, tests and framework output, so
+  # they are excluded from Netlify's secrets scanning. Real secrets are still scanned.
+  SECRETS_SCAN_OMIT_KEYS = "POSTGRES_USER,APP_PORT,RESEND_FROM_EMAIL"
