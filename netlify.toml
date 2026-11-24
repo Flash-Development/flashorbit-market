@@ -1,5 +1,7 @@
 [build.environment]
-  # These env vars hold non-sensitive values ("flash", "3000", a public sender
-  # address) that naturally appear in source, tests and framework output, so
-  # they are excluded from Netlify's secrets scanning. Real secrets are still scanned.
-  SECRETS_SCAN_OMIT_KEYS = "POSTGRES_USER,APP_PORT,RESEND_FROM_EMAIL"
+  # These env vars hold non-sensitive values (database name, port, local dev
+  # user id/email, auth base URL and trusted origins, a public sender address)
+  # that also appear in .env.example, compose.yaml, source and tests, so they are
+  # excluded from Netlify's secrets scanning. Real secrets (BETTER_AUTH_SECRET,
+  # RESEND_API_KEY, POSTGRES_PASSWORD, DATABASE_URL, ...) are still scanned.
+  SECRETS_SCAN_OMIT_KEYS = "POSTGRES_USER,POSTGRES_DB,APP_PORT,RESEND_FROM_EMAIL,FLASH_DEV_USER_ID,FLASH_DEV_USER_EMAIL,BETTER_AUTH_URL,BETTER_AUTH_TRUSTED_ORIGINS"
