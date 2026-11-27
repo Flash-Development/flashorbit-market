@@ -14,7 +14,7 @@ services:
       postgres:
         condition: service_healthy
     networks:
-      - flash_local
+      - flash_orbit_local
 
   postgres:
     image: postgres:17-alpine
@@ -34,7 +34,7 @@ services:
       timeout: 3s
       retries: 20
     networks:
-      - flash_local
+      - flash_orbit_local
 
   app:
     build:
@@ -60,10 +60,10 @@ services:
     tmpfs:
       - /tmp
     networks:
-      - flash_local
+      - flash_orbit_local
 
 networks:
-  flash_local:
+  flash_orbit_local:
     driver: bridge
 
 volumes:

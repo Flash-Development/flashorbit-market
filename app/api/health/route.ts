@@ -9,7 +9,7 @@ export function GET(request: Request) {
   const response = NextResponse.json(
     {
       status: "ok",
-      service: "flash",
+      service: "flash-orbit",
     },
     { status: 200 },
   );

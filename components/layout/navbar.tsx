@@ -31,11 +31,11 @@ export function Navbar() {
   return (
     <header className="site-header">
       <div className="nav-wrap">
-        <a className="brand" href="#top" aria-label="Flash home">
+        <a className="brand" href="#top" aria-label="Flash Orbit home">
           <span className="brand-mark" aria-hidden="true">
             <span>F</span>
           </span>
-          <span>Flash</span>
+          <span>Flash Orbit</span>
         </a>
         <nav className="desktop-nav" aria-label="Main navigation">
           {links.map((link) => (

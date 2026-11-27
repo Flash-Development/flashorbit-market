@@ -217,6 +217,15 @@ export type WorkspaceWhereInput = {
   memberships?: Prisma.MembershipListRelationFilter
   stores?: Prisma.StoreListRelationFilter
   activeUsers?: Prisma.UserListRelationFilter
+  categories?: Prisma.CategoryListRelationFilter
+  products?: Prisma.ProductListRelationFilter
+  variants?: Prisma.ProductVariantListRelationFilter
+  inventoryBalances?: Prisma.InventoryBalanceListRelationFilter
+  inventoryMovements?: Prisma.InventoryMovementListRelationFilter
+  invitations?: Prisma.WorkspaceInvitationListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  subscription?: Prisma.XOR<Prisma.WorkspaceSubscriptionNullableScalarRelationFilter, Prisma.WorkspaceSubscriptionWhereInput> | null
+  usageSnapshots?: Prisma.WorkspaceUsageListRelationFilter
 }
 
 export type WorkspaceOrderByWithRelationInput = {
@@ -232,6 +241,15 @@ export type WorkspaceOrderByWithRelationInput = {
   memberships?: Prisma.MembershipOrderByRelationAggregateInput
   stores?: Prisma.StoreOrderByRelationAggregateInput
   activeUsers?: Prisma.UserOrderByRelationAggregateInput
+  categories?: Prisma.CategoryOrderByRelationAggregateInput
+  products?: Prisma.ProductOrderByRelationAggregateInput
+  variants?: Prisma.ProductVariantOrderByRelationAggregateInput
+  inventoryBalances?: Prisma.InventoryBalanceOrderByRelationAggregateInput
+  inventoryMovements?: Prisma.InventoryMovementOrderByRelationAggregateInput
+  invitations?: Prisma.WorkspaceInvitationOrderByRelationAggregateInput
+  auditLogs?: Prisma.AuditLogOrderByRelationAggregateInput
+  subscription?: Prisma.WorkspaceSubscriptionOrderByWithRelationInput
+  usageSnapshots?: Prisma.WorkspaceUsageOrderByRelationAggregateInput
 }
 
 export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -250,6 +268,15 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   memberships?: Prisma.MembershipListRelationFilter
   stores?: Prisma.StoreListRelationFilter
   activeUsers?: Prisma.UserListRelationFilter
+  categories?: Prisma.CategoryListRelationFilter
+  products?: Prisma.ProductListRelationFilter
+  variants?: Prisma.ProductVariantListRelationFilter
+  inventoryBalances?: Prisma.InventoryBalanceListRelationFilter
+  inventoryMovements?: Prisma.InventoryMovementListRelationFilter
+  invitations?: Prisma.WorkspaceInvitationListRelationFilter
+  auditLogs?: Prisma.AuditLogListRelationFilter
+  subscription?: Prisma.XOR<Prisma.WorkspaceSubscriptionNullableScalarRelationFilter, Prisma.WorkspaceSubscriptionWhereInput> | null
+  usageSnapshots?: Prisma.WorkspaceUsageListRelationFilter
 }, "id" | "slug">
 
 export type WorkspaceOrderByWithAggregationInput = {
@@ -295,6 +322,15 @@ export type WorkspaceCreateInput = {
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
   stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateInput = {
@@ -310,6 +346,15 @@ export type WorkspaceUncheckedCreateInput = {
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
   stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUpdateInput = {
@@ -325,6 +370,15 @@ export type WorkspaceUpdateInput = {
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
   stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateInput = {
@@ -340,6 +394,15 @@ export type WorkspaceUncheckedUpdateInput = {
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
   stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateManyInput = {
@@ -458,6 +521,62 @@ export type WorkspaceUpdateOneRequiredWithoutMembershipsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutMembershipsInput, Prisma.WorkspaceUpdateWithoutMembershipsInput>, Prisma.WorkspaceUncheckedUpdateWithoutMembershipsInput>
 }
 
+export type WorkspaceCreateNestedOneWithoutInvitationsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInvitationsInput, Prisma.WorkspaceUncheckedCreateWithoutInvitationsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInvitationsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutInvitationsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInvitationsInput, Prisma.WorkspaceUncheckedCreateWithoutInvitationsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInvitationsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutInvitationsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutInvitationsInput, Prisma.WorkspaceUpdateWithoutInvitationsInput>, Prisma.WorkspaceUncheckedUpdateWithoutInvitationsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutAuditLogsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutAuditLogsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutAuditLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedCreateWithoutAuditLogsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutAuditLogsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutAuditLogsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutAuditLogsInput, Prisma.WorkspaceUpdateWithoutAuditLogsInput>, Prisma.WorkspaceUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutSubscriptionInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutSubscriptionInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutSubscriptionNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutSubscriptionInput
+  upsert?: Prisma.WorkspaceUpsertWithoutSubscriptionInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutSubscriptionInput, Prisma.WorkspaceUpdateWithoutSubscriptionInput>, Prisma.WorkspaceUncheckedUpdateWithoutSubscriptionInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutUsageSnapshotsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedCreateWithoutUsageSnapshotsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutUsageSnapshotsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutUsageSnapshotsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedCreateWithoutUsageSnapshotsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutUsageSnapshotsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutUsageSnapshotsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutUsageSnapshotsInput, Prisma.WorkspaceUpdateWithoutUsageSnapshotsInput>, Prisma.WorkspaceUncheckedUpdateWithoutUsageSnapshotsInput>
+}
+
 export type WorkspaceCreateNestedOneWithoutStoresInput = {
   create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutStoresInput, Prisma.WorkspaceUncheckedCreateWithoutStoresInput>
   connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutStoresInput
@@ -472,6 +591,76 @@ export type WorkspaceUpdateOneRequiredWithoutStoresNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutStoresInput, Prisma.WorkspaceUpdateWithoutStoresInput>, Prisma.WorkspaceUncheckedUpdateWithoutStoresInput>
 }
 
+export type WorkspaceCreateNestedOneWithoutCategoriesInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutCategoriesInput, Prisma.WorkspaceUncheckedCreateWithoutCategoriesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutCategoriesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutCategoriesInput, Prisma.WorkspaceUncheckedCreateWithoutCategoriesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutCategoriesInput
+  upsert?: Prisma.WorkspaceUpsertWithoutCategoriesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutCategoriesInput, Prisma.WorkspaceUpdateWithoutCategoriesInput>, Prisma.WorkspaceUncheckedUpdateWithoutCategoriesInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutProductsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutProductsInput, Prisma.WorkspaceUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutProductsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutProductsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutProductsInput, Prisma.WorkspaceUncheckedCreateWithoutProductsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutProductsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutProductsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutProductsInput, Prisma.WorkspaceUpdateWithoutProductsInput>, Prisma.WorkspaceUncheckedUpdateWithoutProductsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutVariantsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutVariantsInput, Prisma.WorkspaceUncheckedCreateWithoutVariantsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutVariantsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutVariantsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutVariantsInput, Prisma.WorkspaceUncheckedCreateWithoutVariantsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutVariantsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutVariantsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutVariantsInput, Prisma.WorkspaceUpdateWithoutVariantsInput>, Prisma.WorkspaceUncheckedUpdateWithoutVariantsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutInventoryBalancesInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryBalancesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInventoryBalancesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutInventoryBalancesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryBalancesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInventoryBalancesInput
+  upsert?: Prisma.WorkspaceUpsertWithoutInventoryBalancesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutInventoryBalancesInput, Prisma.WorkspaceUpdateWithoutInventoryBalancesInput>, Prisma.WorkspaceUncheckedUpdateWithoutInventoryBalancesInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutInventoryMovementsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryMovementsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInventoryMovementsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutInventoryMovementsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryMovementsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutInventoryMovementsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutInventoryMovementsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutInventoryMovementsInput, Prisma.WorkspaceUpdateWithoutInventoryMovementsInput>, Prisma.WorkspaceUncheckedUpdateWithoutInventoryMovementsInput>
+}
+
 export type WorkspaceCreateWithoutActiveUsersInput = {
   id?: string
   name: string
@@ -484,6 +673,15 @@ export type WorkspaceCreateWithoutActiveUsersInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
   stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutActiveUsersInput = {
@@ -498,6 +696,15 @@ export type WorkspaceUncheckedCreateWithoutActiveUsersInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
   stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutActiveUsersInput = {
@@ -528,6 +735,15 @@ export type WorkspaceUpdateWithoutActiveUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
   stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutActiveUsersInput = {
@@ -542,6 +758,15 @@ export type WorkspaceUncheckedUpdateWithoutActiveUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
   stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutMembershipsInput = {
@@ -556,6 +781,15 @@ export type WorkspaceCreateWithoutMembershipsInput = {
   updatedAt?: Date | string
   stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutMembershipsInput = {
@@ -570,6 +804,15 @@ export type WorkspaceUncheckedCreateWithoutMembershipsInput = {
   updatedAt?: Date | string
   stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutMembershipsInput = {
@@ -600,6 +843,15 @@ export type WorkspaceUpdateWithoutMembershipsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
@@ -614,6 +866,447 @@ export type WorkspaceUncheckedUpdateWithoutMembershipsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutInvitationsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutInvitationsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutInvitationsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInvitationsInput, Prisma.WorkspaceUncheckedCreateWithoutInvitationsInput>
+}
+
+export type WorkspaceUpsertWithoutInvitationsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInvitationsInput, Prisma.WorkspaceUncheckedUpdateWithoutInvitationsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInvitationsInput, Prisma.WorkspaceUncheckedCreateWithoutInvitationsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutInvitationsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInvitationsInput, Prisma.WorkspaceUncheckedUpdateWithoutInvitationsInput>
+}
+
+export type WorkspaceUpdateWithoutInvitationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutInvitationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutAuditLogsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutAuditLogsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedCreateWithoutAuditLogsInput>
+}
+
+export type WorkspaceUpsertWithoutAuditLogsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedUpdateWithoutAuditLogsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedCreateWithoutAuditLogsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutAuditLogsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutAuditLogsInput, Prisma.WorkspaceUncheckedUpdateWithoutAuditLogsInput>
+}
+
+export type WorkspaceUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutAuditLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutSubscriptionInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutSubscriptionInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutSubscriptionInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedCreateWithoutSubscriptionInput>
+}
+
+export type WorkspaceUpsertWithoutSubscriptionInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedUpdateWithoutSubscriptionInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedCreateWithoutSubscriptionInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutSubscriptionInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutSubscriptionInput, Prisma.WorkspaceUncheckedUpdateWithoutSubscriptionInput>
+}
+
+export type WorkspaceUpdateWithoutSubscriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutSubscriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutUsageSnapshotsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutUsageSnapshotsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutUsageSnapshotsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedCreateWithoutUsageSnapshotsInput>
+}
+
+export type WorkspaceUpsertWithoutUsageSnapshotsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedUpdateWithoutUsageSnapshotsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedCreateWithoutUsageSnapshotsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutUsageSnapshotsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutUsageSnapshotsInput, Prisma.WorkspaceUncheckedUpdateWithoutUsageSnapshotsInput>
+}
+
+export type WorkspaceUpdateWithoutUsageSnapshotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutUsageSnapshotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutStoresInput = {
@@ -628,6 +1321,15 @@ export type WorkspaceCreateWithoutStoresInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutStoresInput = {
@@ -642,6 +1344,15 @@ export type WorkspaceUncheckedCreateWithoutStoresInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
   activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutStoresInput = {
@@ -672,6 +1383,15 @@ export type WorkspaceUpdateWithoutStoresInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutStoresInput = {
@@ -686,6 +1406,555 @@ export type WorkspaceUncheckedUpdateWithoutStoresInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
   activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutCategoriesInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutCategoriesInput, Prisma.WorkspaceUncheckedCreateWithoutCategoriesInput>
+}
+
+export type WorkspaceUpsertWithoutCategoriesInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutCategoriesInput, Prisma.WorkspaceUncheckedUpdateWithoutCategoriesInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutCategoriesInput, Prisma.WorkspaceUncheckedCreateWithoutCategoriesInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutCategoriesInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutCategoriesInput, Prisma.WorkspaceUncheckedUpdateWithoutCategoriesInput>
+}
+
+export type WorkspaceUpdateWithoutCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutProductsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutProductsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutProductsInput, Prisma.WorkspaceUncheckedCreateWithoutProductsInput>
+}
+
+export type WorkspaceUpsertWithoutProductsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutProductsInput, Prisma.WorkspaceUncheckedUpdateWithoutProductsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutProductsInput, Prisma.WorkspaceUncheckedCreateWithoutProductsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutProductsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutProductsInput, Prisma.WorkspaceUncheckedUpdateWithoutProductsInput>
+}
+
+export type WorkspaceUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutVariantsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutVariantsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutVariantsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutVariantsInput, Prisma.WorkspaceUncheckedCreateWithoutVariantsInput>
+}
+
+export type WorkspaceUpsertWithoutVariantsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutVariantsInput, Prisma.WorkspaceUncheckedUpdateWithoutVariantsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutVariantsInput, Prisma.WorkspaceUncheckedCreateWithoutVariantsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutVariantsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutVariantsInput, Prisma.WorkspaceUncheckedUpdateWithoutVariantsInput>
+}
+
+export type WorkspaceUpdateWithoutVariantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutVariantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutInventoryBalancesInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutInventoryBalancesInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutInventoryBalancesInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryBalancesInput>
+}
+
+export type WorkspaceUpsertWithoutInventoryBalancesInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedUpdateWithoutInventoryBalancesInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryBalancesInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutInventoryBalancesInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInventoryBalancesInput, Prisma.WorkspaceUncheckedUpdateWithoutInventoryBalancesInput>
+}
+
+export type WorkspaceUpdateWithoutInventoryBalancesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutInventoryBalancesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryMovements?: Prisma.InventoryMovementUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutInventoryMovementsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutInventoryMovementsInput = {
+  id?: string
+  name: string
+  slug: string
+  country?: string
+  currency?: string
+  timezone?: string
+  status?: $Enums.WorkspaceStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutWorkspaceInput
+  stores?: Prisma.StoreUncheckedCreateNestedManyWithoutWorkspaceInput
+  activeUsers?: Prisma.UserUncheckedCreateNestedManyWithoutActiveWorkspaceInput
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutWorkspaceInput
+  products?: Prisma.ProductUncheckedCreateNestedManyWithoutWorkspaceInput
+  variants?: Prisma.ProductVariantUncheckedCreateNestedManyWithoutWorkspaceInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedCreateNestedManyWithoutWorkspaceInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedCreateNestedManyWithoutWorkspaceInput
+  auditLogs?: Prisma.AuditLogUncheckedCreateNestedManyWithoutWorkspaceInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedCreateNestedOneWithoutWorkspaceInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutInventoryMovementsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryMovementsInput>
+}
+
+export type WorkspaceUpsertWithoutInventoryMovementsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedUpdateWithoutInventoryMovementsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedCreateWithoutInventoryMovementsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutInventoryMovementsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutInventoryMovementsInput, Prisma.WorkspaceUncheckedUpdateWithoutInventoryMovementsInput>
+}
+
+export type WorkspaceUpdateWithoutInventoryMovementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutInventoryMovementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  country?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumWorkspaceStatusFieldUpdateOperationsInput | $Enums.WorkspaceStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutWorkspaceNestedInput
+  stores?: Prisma.StoreUncheckedUpdateManyWithoutWorkspaceNestedInput
+  activeUsers?: Prisma.UserUncheckedUpdateManyWithoutActiveWorkspaceNestedInput
+  categories?: Prisma.CategoryUncheckedUpdateManyWithoutWorkspaceNestedInput
+  products?: Prisma.ProductUncheckedUpdateManyWithoutWorkspaceNestedInput
+  variants?: Prisma.ProductVariantUncheckedUpdateManyWithoutWorkspaceNestedInput
+  inventoryBalances?: Prisma.InventoryBalanceUncheckedUpdateManyWithoutWorkspaceNestedInput
+  invitations?: Prisma.WorkspaceInvitationUncheckedUpdateManyWithoutWorkspaceNestedInput
+  auditLogs?: Prisma.AuditLogUncheckedUpdateManyWithoutWorkspaceNestedInput
+  subscription?: Prisma.WorkspaceSubscriptionUncheckedUpdateOneWithoutWorkspaceNestedInput
+  usageSnapshots?: Prisma.WorkspaceUsageUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 
@@ -697,12 +1966,28 @@ export type WorkspaceCountOutputType = {
   memberships: number
   stores: number
   activeUsers: number
+  categories: number
+  products: number
+  variants: number
+  inventoryBalances: number
+  inventoryMovements: number
+  invitations: number
+  auditLogs: number
+  usageSnapshots: number
 }
 
 export type WorkspaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memberships?: boolean | WorkspaceCountOutputTypeCountMembershipsArgs
   stores?: boolean | WorkspaceCountOutputTypeCountStoresArgs
   activeUsers?: boolean | WorkspaceCountOutputTypeCountActiveUsersArgs
+  categories?: boolean | WorkspaceCountOutputTypeCountCategoriesArgs
+  products?: boolean | WorkspaceCountOutputTypeCountProductsArgs
+  variants?: boolean | WorkspaceCountOutputTypeCountVariantsArgs
+  inventoryBalances?: boolean | WorkspaceCountOutputTypeCountInventoryBalancesArgs
+  inventoryMovements?: boolean | WorkspaceCountOutputTypeCountInventoryMovementsArgs
+  invitations?: boolean | WorkspaceCountOutputTypeCountInvitationsArgs
+  auditLogs?: boolean | WorkspaceCountOutputTypeCountAuditLogsArgs
+  usageSnapshots?: boolean | WorkspaceCountOutputTypeCountUsageSnapshotsArgs
 }
 
 /**
@@ -736,6 +2021,62 @@ export type WorkspaceCountOutputTypeCountActiveUsersArgs<ExtArgs extends runtime
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CategoryWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountVariantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ProductVariantWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountInventoryBalancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InventoryBalanceWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountInventoryMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InventoryMovementWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountInvitationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WorkspaceInvitationWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountAuditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AuditLogWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountUsageSnapshotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.WorkspaceUsageWhereInput
+}
+
 
 export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -750,6 +2091,15 @@ export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   memberships?: boolean | Prisma.Workspace$membershipsArgs<ExtArgs>
   stores?: boolean | Prisma.Workspace$storesArgs<ExtArgs>
   activeUsers?: boolean | Prisma.Workspace$activeUsersArgs<ExtArgs>
+  categories?: boolean | Prisma.Workspace$categoriesArgs<ExtArgs>
+  products?: boolean | Prisma.Workspace$productsArgs<ExtArgs>
+  variants?: boolean | Prisma.Workspace$variantsArgs<ExtArgs>
+  inventoryBalances?: boolean | Prisma.Workspace$inventoryBalancesArgs<ExtArgs>
+  inventoryMovements?: boolean | Prisma.Workspace$inventoryMovementsArgs<ExtArgs>
+  invitations?: boolean | Prisma.Workspace$invitationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Workspace$auditLogsArgs<ExtArgs>
+  subscription?: boolean | Prisma.Workspace$subscriptionArgs<ExtArgs>
+  usageSnapshots?: boolean | Prisma.Workspace$usageSnapshotsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workspace"]>
 
@@ -794,6 +2144,15 @@ export type WorkspaceInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   memberships?: boolean | Prisma.Workspace$membershipsArgs<ExtArgs>
   stores?: boolean | Prisma.Workspace$storesArgs<ExtArgs>
   activeUsers?: boolean | Prisma.Workspace$activeUsersArgs<ExtArgs>
+  categories?: boolean | Prisma.Workspace$categoriesArgs<ExtArgs>
+  products?: boolean | Prisma.Workspace$productsArgs<ExtArgs>
+  variants?: boolean | Prisma.Workspace$variantsArgs<ExtArgs>
+  inventoryBalances?: boolean | Prisma.Workspace$inventoryBalancesArgs<ExtArgs>
+  inventoryMovements?: boolean | Prisma.Workspace$inventoryMovementsArgs<ExtArgs>
+  invitations?: boolean | Prisma.Workspace$invitationsArgs<ExtArgs>
+  auditLogs?: boolean | Prisma.Workspace$auditLogsArgs<ExtArgs>
+  subscription?: boolean | Prisma.Workspace$subscriptionArgs<ExtArgs>
+  usageSnapshots?: boolean | Prisma.Workspace$usageSnapshotsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkspaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -805,6 +2164,15 @@ export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     memberships: Prisma.$MembershipPayload<ExtArgs>[]
     stores: Prisma.$StorePayload<ExtArgs>[]
     activeUsers: Prisma.$UserPayload<ExtArgs>[]
+    categories: Prisma.$CategoryPayload<ExtArgs>[]
+    products: Prisma.$ProductPayload<ExtArgs>[]
+    variants: Prisma.$ProductVariantPayload<ExtArgs>[]
+    inventoryBalances: Prisma.$InventoryBalancePayload<ExtArgs>[]
+    inventoryMovements: Prisma.$InventoryMovementPayload<ExtArgs>[]
+    invitations: Prisma.$WorkspaceInvitationPayload<ExtArgs>[]
+    auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
+    subscription: Prisma.$WorkspaceSubscriptionPayload<ExtArgs> | null
+    usageSnapshots: Prisma.$WorkspaceUsagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1213,6 +2581,15 @@ export interface Prisma__WorkspaceClient<T, Null = never, ExtArgs extends runtim
   memberships<T extends Prisma.Workspace$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   stores<T extends Prisma.Workspace$storesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$storesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activeUsers<T extends Prisma.Workspace$activeUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$activeUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  categories<T extends Prisma.Workspace$categoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  products<T extends Prisma.Workspace$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  variants<T extends Prisma.Workspace$variantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$variantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  inventoryBalances<T extends Prisma.Workspace$inventoryBalancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$inventoryBalancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InventoryBalancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  inventoryMovements<T extends Prisma.Workspace$inventoryMovementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$inventoryMovementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InventoryMovementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invitations<T extends Prisma.Workspace$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkspaceInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  auditLogs<T extends Prisma.Workspace$auditLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subscription<T extends Prisma.Workspace$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$subscriptionArgs<ExtArgs>>): Prisma.Prisma__WorkspaceSubscriptionClient<runtime.Types.Result.GetResult<Prisma.$WorkspaceSubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  usageSnapshots<T extends Prisma.Workspace$usageSnapshotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$usageSnapshotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WorkspaceUsagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1713,6 +3090,217 @@ export type Workspace$activeUsersArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Workspace.categories
+ */
+export type Workspace$categoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Category
+   */
+  select?: Prisma.CategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Category
+   */
+  omit?: Prisma.CategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CategoryInclude<ExtArgs> | null
+  where?: Prisma.CategoryWhereInput
+  orderBy?: Prisma.CategoryOrderByWithRelationInput | Prisma.CategoryOrderByWithRelationInput[]
+  cursor?: Prisma.CategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CategoryScalarFieldEnum | Prisma.CategoryScalarFieldEnum[]
+}
+
+/**
+ * Workspace.products
+ */
+export type Workspace$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Product
+   */
+  select?: Prisma.ProductSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Product
+   */
+  omit?: Prisma.ProductOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductInclude<ExtArgs> | null
+  where?: Prisma.ProductWhereInput
+  orderBy?: Prisma.ProductOrderByWithRelationInput | Prisma.ProductOrderByWithRelationInput[]
+  cursor?: Prisma.ProductWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductScalarFieldEnum | Prisma.ProductScalarFieldEnum[]
+}
+
+/**
+ * Workspace.variants
+ */
+export type Workspace$variantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ProductVariant
+   */
+  select?: Prisma.ProductVariantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ProductVariant
+   */
+  omit?: Prisma.ProductVariantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductVariantInclude<ExtArgs> | null
+  where?: Prisma.ProductVariantWhereInput
+  orderBy?: Prisma.ProductVariantOrderByWithRelationInput | Prisma.ProductVariantOrderByWithRelationInput[]
+  cursor?: Prisma.ProductVariantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ProductVariantScalarFieldEnum | Prisma.ProductVariantScalarFieldEnum[]
+}
+
+/**
+ * Workspace.inventoryBalances
+ */
+export type Workspace$inventoryBalancesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InventoryBalance
+   */
+  select?: Prisma.InventoryBalanceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InventoryBalance
+   */
+  omit?: Prisma.InventoryBalanceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InventoryBalanceInclude<ExtArgs> | null
+  where?: Prisma.InventoryBalanceWhereInput
+  orderBy?: Prisma.InventoryBalanceOrderByWithRelationInput | Prisma.InventoryBalanceOrderByWithRelationInput[]
+  cursor?: Prisma.InventoryBalanceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InventoryBalanceScalarFieldEnum | Prisma.InventoryBalanceScalarFieldEnum[]
+}
+
+/**
+ * Workspace.inventoryMovements
+ */
+export type Workspace$inventoryMovementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the InventoryMovement
+   */
+  select?: Prisma.InventoryMovementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the InventoryMovement
+   */
+  omit?: Prisma.InventoryMovementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InventoryMovementInclude<ExtArgs> | null
+  where?: Prisma.InventoryMovementWhereInput
+  orderBy?: Prisma.InventoryMovementOrderByWithRelationInput | Prisma.InventoryMovementOrderByWithRelationInput[]
+  cursor?: Prisma.InventoryMovementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InventoryMovementScalarFieldEnum | Prisma.InventoryMovementScalarFieldEnum[]
+}
+
+/**
+ * Workspace.invitations
+ */
+export type Workspace$invitationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkspaceInvitation
+   */
+  select?: Prisma.WorkspaceInvitationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WorkspaceInvitation
+   */
+  omit?: Prisma.WorkspaceInvitationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkspaceInvitationInclude<ExtArgs> | null
+  where?: Prisma.WorkspaceInvitationWhereInput
+  orderBy?: Prisma.WorkspaceInvitationOrderByWithRelationInput | Prisma.WorkspaceInvitationOrderByWithRelationInput[]
+  cursor?: Prisma.WorkspaceInvitationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WorkspaceInvitationScalarFieldEnum | Prisma.WorkspaceInvitationScalarFieldEnum[]
+}
+
+/**
+ * Workspace.auditLogs
+ */
+export type Workspace$auditLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuditLog
+   */
+  select?: Prisma.AuditLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AuditLog
+   */
+  omit?: Prisma.AuditLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuditLogInclude<ExtArgs> | null
+  where?: Prisma.AuditLogWhereInput
+  orderBy?: Prisma.AuditLogOrderByWithRelationInput | Prisma.AuditLogOrderByWithRelationInput[]
+  cursor?: Prisma.AuditLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AuditLogScalarFieldEnum | Prisma.AuditLogScalarFieldEnum[]
+}
+
+/**
+ * Workspace.subscription
+ */
+export type Workspace$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkspaceSubscription
+   */
+  select?: Prisma.WorkspaceSubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WorkspaceSubscription
+   */
+  omit?: Prisma.WorkspaceSubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkspaceSubscriptionInclude<ExtArgs> | null
+  where?: Prisma.WorkspaceSubscriptionWhereInput
+}
+
+/**
+ * Workspace.usageSnapshots
+ */
+export type Workspace$usageSnapshotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the WorkspaceUsage
+   */
+  select?: Prisma.WorkspaceUsageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the WorkspaceUsage
+   */
+  omit?: Prisma.WorkspaceUsageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WorkspaceUsageInclude<ExtArgs> | null
+  where?: Prisma.WorkspaceUsageWhereInput
+  orderBy?: Prisma.WorkspaceUsageOrderByWithRelationInput | Prisma.WorkspaceUsageOrderByWithRelationInput[]
+  cursor?: Prisma.WorkspaceUsageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.WorkspaceUsageScalarFieldEnum | Prisma.WorkspaceUsageScalarFieldEnum[]
 }
 
 /**

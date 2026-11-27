@@ -9,7 +9,7 @@ const audiences = [
 
 export function SocialProof() {
   return (
-    <section className="social-proof" aria-label="Businesses Flash is designed to support">
+    <section className="social-proof" aria-label="Businesses Flash Orbit is designed to support">
       <div className="social-proof-inner">
         <p>Designed for the people moving commerce forward.</p>
         <div className="capability-list">

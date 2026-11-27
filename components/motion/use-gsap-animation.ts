@@ -29,7 +29,7 @@ export function useGsapAnimation(
           if (!cancelled) ScrollTrigger.refresh();
         })
         .catch((error: unknown) => {
-          console.error("Flash scroll animation refresh failed.", error);
+          console.error("Flash Orbit scroll animation refresh failed.", error);
         });
     };
 
@@ -47,7 +47,7 @@ export function useGsapAnimation(
         if (usesScrollTrigger) refreshFrame = window.requestAnimationFrame(refresh);
       })
       .catch((error: unknown) => {
-        console.error("Flash animation failed to initialize.", error);
+        console.error("Flash Orbit animation failed to initialize.", error);
       });
 
     if (usesScrollTrigger) {

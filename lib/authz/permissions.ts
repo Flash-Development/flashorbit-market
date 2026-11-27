@@ -8,7 +8,13 @@ export type Capability =
   | "membership:read"
   | "membership:invite"
   | "membership:update"
-  | "membership:remove";
+  | "membership:remove"
+  | "catalog:read"
+  | "catalog:manage"
+  | "inventory:read"
+  | "inventory:manage"
+  | "audit:read"
+  | "subscription:read";
 
 const permissions: Record<MembershipRole, ReadonlySet<Capability>> = {
   OWNER: new Set([
@@ -20,6 +26,12 @@ const permissions: Record<MembershipRole, ReadonlySet<Capability>> = {
     "membership:invite",
     "membership:update",
     "membership:remove",
+    "catalog:read",
+    "catalog:manage",
+    "inventory:read",
+    "inventory:manage",
+    "audit:read",
+    "subscription:read",
   ]),
   ADMIN: new Set([
     "workspace:read",
@@ -28,9 +40,15 @@ const permissions: Record<MembershipRole, ReadonlySet<Capability>> = {
     "membership:invite",
     "membership:update",
     "membership:remove",
+    "catalog:read",
+    "catalog:manage",
+    "inventory:read",
+    "inventory:manage",
+    "audit:read",
+    "subscription:read",
   ]),
-  MANAGER: new Set(["workspace:read", "membership:read"]),
-  STAFF: new Set(["workspace:read", "membership:read"]),
+  MANAGER: new Set(["workspace:read", "membership:read", "catalog:read", "catalog:manage", "inventory:read", "inventory:manage", "audit:read", "subscription:read"]),
+  STAFF: new Set(["workspace:read", "membership:read", "catalog:read", "inventory:read"]),
 };
 
 export function roleCan(role: MembershipRole, capability: Capability) {

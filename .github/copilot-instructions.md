@@ -1,7 +1,7 @@
-# Flash — Copilot Project Instructions
+# Flash Orbit — Copilot Project Instructions
 
 ## Product context
-Flash is a multi-tenant commerce, inventory, and financial-management SaaS.
+Flash Orbit is a multi-tenant commerce, inventory, and financial-management SaaS.
 The initial market is Nigeria, followed by broader African markets. The product
 should be globally credible, accessible, secure, and suitable for businesses
 from independent sellers to growing retailers.
@@ -20,7 +20,7 @@ Core product areas:
 4. Build incrementally. Do not implement future phases unless explicitly requested.
 5. Prefer simple, maintainable solutions over premature abstraction.
 6. Never fabricate customer logos, testimonials, usage metrics, integrations, certifications, or product capabilities.
-7. Label demo/sample data clearly. Never present sample financial figures as real Flash business data.
+7. Label demo/sample data clearly. Never present sample financial figures as real Flash Orbit business data.
 8. Treat tenant isolation and financial correctness as core product requirements, not later enhancements.
 
 ## Multi-tenant and security principles
@@ -36,7 +36,7 @@ When backend or data features are introduced:
 - Record financial events in an auditable way; avoid silently overwriting historical transactions.
 
 ## Visual, 3D, and motion engineering standards
-Flash should deliver premium, purposeful visual experiences. Use advanced motion and 3D
+Flash Orbit should deliver premium, purposeful visual experiences. Use advanced motion and 3D
 where they improve product understanding, brand identity, or interaction—not as decoration.
 
 Candidate technology direction, subject to repository inspection and approval:

@@ -1,9 +1,9 @@
-# Flash — Repository Bootstrap and Agent Setup
+# Flash Orbit — Repository Bootstrap and Agent Setup
 
 Inspect this repository before making changes.
 
 ## Goal
-Prepare the repository for disciplined development of Flash, a multi-tenant commerce,
+Prepare the repository for disciplined development of Flash Orbit, a multi-tenant commerce,
 inventory, and financial-management SaaS.
 
 ## Instructions
@@ -12,11 +12,11 @@ inventory, and financial-management SaaS.
 2. Do not replace or overwrite useful existing instructions.
 3. Create or carefully update:
    - `.github/copilot-instructions.md`
-   - `.github/agents/flash-orchestrator.agent.md`
-   - `.github/agents/flash-product-architect.agent.md`
-   - `.github/agents/flash-frontend-engineer.agent.md`
-   - `.github/agents/flash-qa-reviewer.agent.md`
-   - `.github/agents/flash-security-reviewer.agent.md`
+   - `.github/agents/flash-orbit-orchestrator.agent.md`
+   - `.github/agents/flash-orbit-product-architect.agent.md`
+   - `.github/agents/flash-orbit-frontend-engineer.agent.md`
+   - `.github/agents/flash-orbit-qa-reviewer.agent.md`
+   - `.github/agents/flash-orbit-security-reviewer.agent.md`
 4. Preserve the repository's actual stack and conventions. Do not install packages or change
    application code as part of this setup.
 5. Add a concise `docs/engineering-workflow.md` describing the task lifecycle:

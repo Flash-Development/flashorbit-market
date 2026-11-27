@@ -35,14 +35,14 @@ function closeServer(server: ReturnType<typeof createServer>) {
 
 const emailInput = {
   email: "seller@example.test",
-  name: "Flash Seller",
-  url: "https://flash.example/verify?token=private-token",
+  name: "Flash Orbit Seller",
+  url: "https://flash-orbit.example/verify?token=private-token",
 };
 
 function config(baseUrl: string) {
   return {
     apiKey: "re_test_key",
-    from: "Flash <auth@mail.example.test>",
+    from: "Flash Orbit <auth@mail.example.test>",
     verificationTemplateId: "template_test",
     baseUrl,
   };
@@ -72,13 +72,13 @@ test("Resend verification uses the published template and required variables", a
   assert.equal(requests[0]?.authorization, "Bearer re_test_key");
   assert.ok(requests[0]?.idempotencyKey);
   assert.deepEqual(requests[0]?.body, {
-    from: "Flash <auth@mail.example.test>",
+    from: "Flash Orbit <auth@mail.example.test>",
     to: "seller@example.test",
-    subject: "Verify your Flash account",
+    subject: "Verify your Flash Orbit account",
     template: {
       id: "template_test",
       variables: {
-        USER_NAME: "Flash Seller",
+        USER_NAME: "Flash Orbit Seller",
         VERIFICATION_URL: emailInput.url,
       },
     },

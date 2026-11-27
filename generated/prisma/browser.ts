@@ -38,10 +38,55 @@ export type Workspace = Prisma.WorkspaceModel
  */
 export type Membership = Prisma.MembershipModel
 /**
+ * Model WorkspaceInvitation
+ * 
+ */
+export type WorkspaceInvitation = Prisma.WorkspaceInvitationModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model WorkspaceSubscription
+ * 
+ */
+export type WorkspaceSubscription = Prisma.WorkspaceSubscriptionModel
+/**
+ * Model WorkspaceUsage
+ * 
+ */
+export type WorkspaceUsage = Prisma.WorkspaceUsageModel
+/**
  * Model Store
  * 
  */
 export type Store = Prisma.StoreModel
+/**
+ * Model Category
+ * 
+ */
+export type Category = Prisma.CategoryModel
+/**
+ * Model Product
+ * 
+ */
+export type Product = Prisma.ProductModel
+/**
+ * Model ProductVariant
+ * 
+ */
+export type ProductVariant = Prisma.ProductVariantModel
+/**
+ * Model InventoryBalance
+ * 
+ */
+export type InventoryBalance = Prisma.InventoryBalanceModel
+/**
+ * Model InventoryMovement
+ * 
+ */
+export type InventoryMovement = Prisma.InventoryMovementModel
 /**
  * Model UserAuth
  * 

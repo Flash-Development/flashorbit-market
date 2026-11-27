@@ -1,11 +1,11 @@
-# Flash — 3D and Motion Architecture Review
+# Flash Orbit — 3D and Motion Architecture Review
 
-Act as Flash's frontend motion and 3D engineering specialist.
+Act as Flash Orbit's frontend motion and 3D engineering specialist.
 
 This is a planning-only task. Do not install dependencies or edit application code.
 
 ## Goal
-Propose a premium, accessible, performant 3D and animation architecture for Flash.
+Propose a premium, accessible, performant 3D and animation architecture for Flash Orbit.
 
 ## Inspect
 - Current framework and rendering model.

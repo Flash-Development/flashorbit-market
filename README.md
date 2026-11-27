@@ -1,11 +1,11 @@
-# Flash
+# Flash Orbit
 
-Flash is a multi-tenant commerce, inventory, and financial-management SaaS for ambitious
+Flash Orbit is a multi-tenant commerce, inventory, and financial-management SaaS for ambitious
 businesses. The initial market is Nigeria, with Africa next.
 
-The application includes the public marketing website and the initial authentication,
-workspace-onboarding, and dashboard-shell foundation. Product interfaces and financial
-figures shown on the marketing page are illustrative; inventory, order processing,
+The application includes the public marketing website, authentication, workspace
+onboarding, a product catalog, and inventory management. Product interfaces and
+financial figures shown on the marketing page are illustrative; order processing,
 payments, and financial operations are not implemented.
 
 ## Run locally
@@ -41,7 +41,13 @@ docker compose ps
 docker compose logs -f postgres
 ```
 
-Build and run the existing Flash application in Docker:
+The development switches for mock identity and seed data use the
+`FLASH_ORBIT_DEV_*` environment-variable prefix. The local `.env` was migrated;
+update other existing development configurations to these names. The database name,
+user, and persistent volume keep their existing `flash` identifiers so a rebrand
+does not detach local database data.
+
+Build and run the existing Flash Orbit application in Docker:
 
 ```sh
 docker compose up -d --build app
@@ -114,18 +120,17 @@ http://127.0.0.1:3000/onboarding
 http://127.0.0.1:3000/dashboard
 ```
 
-Provider identities map to local Flash users through `ExternalIdentity`. Workspace
+Provider identities map to local Flash Orbit users through `ExternalIdentity`. Workspace
 memberships and roles remain authoritative. Do not expose provider secrets or role claims
 to client components. Email verification is required. The server-side Resend adapter is
-implemented, but live delivery is not verified in the current environment. Configure a
-Resend domain-restricted sending key, verified sender, and published verification template
-using `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `RESEND_VERIFICATION_TEMPLATE_ID`. The template must define
-`USER_NAME` and `VERIFICATION_URL`. Keep the full-access setup key in a separate operator
-session or Resend CLI login; never store it in the app's `.env` or pass it to the app
-container. For local testing without an owned domain, use Resend's
-`onboarding@resend.dev` sender with Resend test recipient addresses only. The temporary
-send-only key is not domain-scoped; replace it with a domain-restricted sending key after
-verifying an owned domain before accepting real customer signups.
+implemented. The `flashorbit.xyz` sending domain is verified, and a delivery test from
+`Flash Orbit <auth@flashorbit.xyz>` was confirmed delivered. Configure
+`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `RESEND_VERIFICATION_TEMPLATE_ID` for each
+environment. Use a send-only API key restricted to the verified domain; the published
+verification template must define `USER_NAME` and `VERIFICATION_URL`. Keep the full-access
+setup key in a separate operator session or Resend CLI login; never store it in the app's
+`.env` or pass it to the app container. For local testing without an owned domain, use
+Resend's `onboarding@resend.dev` sender with Resend test recipient addresses only.
 
 ## Structured logging
 

@@ -13,7 +13,7 @@ export function HowItWorks() {
     <section className="steps-section section-space" id="how-it-works">
       <div className="container">
         <SectionHeading
-          eyebrow="How Flash is designed to work"
+          eyebrow="How Flash Orbit is designed to work"
           title="A clearer path from setup to sale."
           description="A considered onboarding flow for the work of opening and running a store."
         />

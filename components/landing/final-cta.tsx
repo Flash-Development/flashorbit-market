@@ -41,7 +41,7 @@ export function FinalCta() {
           <div className="final-cta-content">
             <span className="cta-eyebrow"><i /> The system behind every sale</span>
             <h2>Run your store.<br />Know your numbers.</h2>
-            <p>See how Flash is being designed for the work behind every sale.</p>
+            <p>See how Flash Orbit is being designed for the work behind every sale.</p>
             <a className="button button--light" href="#dashboard">Explore the platform <ArrowUpRight size={16} /></a>
             <span className="cta-footnote"><Check size={13} /> In development · No account or payment required</span>
           </div>

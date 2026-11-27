@@ -1,17 +1,17 @@
-# Flash Engineering Workflow
+# Flash Orbit Engineering Workflow
 
 ## Purpose
 This workflow keeps product scope, implementation quality, and validation consistent while
-Flash is built with GitHub Copilot.
+Flash Orbit is built with GitHub Copilot.
 
 ## Standard lifecycle
 
 ### 1. Inspect
-Use **Flash Orchestrator** to inspect the repository, relevant code paths, conventions,
+Use **Flash Orbit Orchestrator** to inspect the repository, relevant code paths, conventions,
 dependencies, and available scripts. No code changes during discovery.
 
 ### 2. Define
-Use **Flash Product Architect** for product requirements, user journeys, acceptance criteria,
+Use **Flash Orbit Product Architect** for product requirements, user journeys, acceptance criteria,
 non-goals, data ownership, and unresolved decisions.
 
 ### 3. Plan and approve
@@ -25,7 +25,7 @@ The Orchestrator presents a small implementation plan:
 The developer approves the plan before implementation for substantial work.
 
 ### 4. Implement
-Use **Flash Frontend Engineer** for interface work. Add other specialists only when their
+Use **Flash Orbit Frontend Engineer** for interface work. Add other specialists only when their
 domain is in scope. Keep changes small and focused.
 
 ### 5. Validate
@@ -38,7 +38,7 @@ Run the commands discovered in the repository, not guessed commands:
 - Relevant manual or browser checks
 
 ### 6. Review
-Use **Flash QA Reviewer** for an independent review. Use **Flash Security Reviewer** whenever
+Use **Flash Orbit QA Reviewer** for an independent review. Use **Flash Orbit Security Reviewer** whenever
 authentication, tenant boundaries, user data, payments, file uploads, or financial records
 are affected. Reviewers report findings; the implementation agent fixes them.
 
@@ -55,11 +55,11 @@ Summarize:
 
 | Agent | Primary responsibility | Expected behavior |
 |---|---|---|
-| Flash Orchestrator | Coordinate work | Inspect, plan, sequence, report |
-| Flash Product Architect | Product and domain design | Requirements and acceptance criteria |
-| Flash Frontend Engineer | Frontend implementation | Responsive, accessible UI |
-| Flash QA Reviewer | Independent quality review | Review only; no edits |
-| Flash Security Reviewer | Security and data integrity | Review only; no edits |
+| Flash Orbit Orchestrator | Coordinate work | Inspect, plan, sequence, report |
+| Flash Orbit Product Architect | Product and domain design | Requirements and acceptance criteria |
+| Flash Orbit Frontend Engineer | Frontend implementation | Responsive, accessible UI |
+| Flash Orbit QA Reviewer | Independent quality review | Review only; no edits |
+| Flash Orbit Security Reviewer | Security and data integrity | Review only; no edits |
 
 ## Visual and motion workflow
 For each frontend milestone, the plan must include:

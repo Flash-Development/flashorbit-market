@@ -19,6 +19,15 @@ export async function getAuthenticatedWorkspaceContext(userId: string) {
   });
 }
 
+export async function getActiveWorkspaceContext(userId: string) {
+  const [user, workspaces] = await Promise.all([
+    prisma.user.findUnique({ where: { id: userId }, select: { workspaceId: true } }),
+    getAuthenticatedWorkspaceContext(userId),
+  ]);
+  return workspaces.find((workspace) => workspace.id === user?.workspaceId) ??
+    workspaces[0] ?? null;
+}
+
 export async function createOnboardingWorkspace(
   userId: string,
   email: string,

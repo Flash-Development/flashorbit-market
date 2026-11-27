@@ -63,12 +63,12 @@ test("verification email server failures become retryable, safe responses", asyn
       message: "provider failure with private details",
       token: "secret-verification-token",
     }, { status: 500 }),
-    "flash-request-123",
+    "flash-orbit-request-123",
   );
   const body = await response.json() as { code: string; message: string };
   assert.equal(response.status, 503);
   assert.equal(response.headers.get("retry-after"), "30");
-  assert.equal(response.headers.get("x-request-id"), "flash-request-123");
+  assert.equal(response.headers.get("x-request-id"), "flash-orbit-request-123");
   assert.equal(body.code, "VERIFICATION_EMAIL_UNAVAILABLE");
   assert.match(body.message, /try again shortly/);
   assert.doesNotMatch(JSON.stringify(body), /private details|secret-verification-token/);

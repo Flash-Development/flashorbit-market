@@ -24,7 +24,7 @@ export class SceneErrorBoundary extends Component<
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     this.props.onError?.();
-    console.error("Flash 3D scene failed; using its static fallback.", error, info);
+    console.error("Flash Orbit 3D scene failed; using its static fallback.", error, info);
   }
 
   render() {

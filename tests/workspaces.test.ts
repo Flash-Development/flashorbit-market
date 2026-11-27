@@ -14,7 +14,7 @@ test("workspace creation is atomic and creates OWNER membership", async (context
   context.after(() => prisma.$disconnect());
   const suffix = crypto.randomUUID().slice(0, 8);
   const workspace = await createWorkspace(
-    { userId: `test-owner-${suffix}`, email: `owner-${suffix}@flash.test` },
+    { userId: `test-owner-${suffix}`, email: `owner-${suffix}@flash-orbit.test` },
     { name: `Test Store ${suffix}` },
     prisma,
   );
@@ -32,13 +32,13 @@ test("duplicate slugs fail and workspace isolation is enforced", async (context)
   context.after(() => prisma.$disconnect());
   const suffix = crypto.randomUUID().slice(0, 8);
   const first = await createWorkspace(
-    { userId: `owner-a-${suffix}`, email: `owner-a-${suffix}@flash.test` },
+    { userId: `owner-a-${suffix}`, email: `owner-a-${suffix}@flash-orbit.test` },
     { name: "Isolation Store", slug: `isolation-${suffix}` },
     prisma,
   );
   await assert.rejects(
     createWorkspace(
-      { userId: `owner-b-${suffix}`, email: `owner-b-${suffix}@flash.test` },
+      { userId: `owner-b-${suffix}`, email: `owner-b-${suffix}@flash-orbit.test` },
       { name: "Other Store", slug: first.slug },
       prisma,
     ),

@@ -14,11 +14,11 @@ export function Footer() {
       <div className="footer-inner">
         <div className="footer-top">
           <div>
-            <a className="brand brand--footer" href="#top" aria-label="Flash home">
+            <a className="brand brand--footer" href="#top" aria-label="Flash Orbit home">
               <span className="brand-mark" aria-hidden="true">
                 <span>F</span>
               </span>
-              <span>Flash</span>
+              <span>Flash Orbit</span>
             </a>
             <p>Run your store. Know your numbers. Grow with confidence.</p>
           </div>
@@ -34,7 +34,7 @@ export function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Flash. All rights reserved.</span>
+          <span>© 2026 Flash Orbit. All rights reserved.</span>
           <span>Product in development · Sample interfaces and figures are illustrative.</span>
         </div>
       </div>

@@ -9,14 +9,14 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
   const { verified } = await searchParams;
   return (
     <section className="auth-card">
-      <Link className="auth-brand" href="/">Flash</Link>
+      <Link className="auth-brand" href="/">Flash Orbit</Link>
       <div>
         <span className="auth-eyebrow">Welcome back</span>
-        <h1>Sign in to Flash</h1>
+        <h1>Sign in to Flash Orbit</h1>
         <p>Manage your store, stock and finances from one workspace.</p>
       </div>
       <AuthForm mode="signin" emailVerified={verified === "1"} />
-      <p className="auth-switch">New to Flash? <Link href="/sign-up">Create an account</Link></p>
+      <p className="auth-switch">New to Flash Orbit? <Link href="/sign-up">Create an account</Link></p>
     </section>
   );
 }

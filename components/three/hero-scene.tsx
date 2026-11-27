@@ -16,10 +16,10 @@ type SceneContentProps = {
   onReady: (rotate: (alternate: boolean) => void) => void;
 };
 
-function FlashMark({ onReady }: SceneContentProps) {
+function FlashOrbitMark({ onReady }: SceneContentProps) {
   const markRef = useRef<Group>(null);
   const { gl, invalidate, size } = useThree();
-  const flashGeometry = useMemo(() => {
+  const flashOrbitGeometry = useMemo(() => {
     const shape = new Shape();
     shape.moveTo(-0.48, -0.72);
     shape.lineTo(-0.16, -0.72);
@@ -193,7 +193,7 @@ function FlashMark({ onReady }: SceneContentProps) {
             emissiveIntensity={0.18}
           />
         </RoundedBox>
-        <mesh geometry={flashGeometry} position={[0, 0, 0.245]} castShadow receiveShadow>
+        <mesh geometry={flashOrbitGeometry} position={[0, 0, 0.245]} castShadow receiveShadow>
           <meshPhysicalMaterial
             color="#f4f3ff"
             metalness={0.16}
@@ -243,7 +243,7 @@ function SceneContent({ onReady }: SceneContentProps) {
       <directionalLight position={[3.5, 4.5, 5]} intensity={2.2} color="#fff4e8" />
       <pointLight position={[-3, 0.2, 2.4]} intensity={11} color="#746dff" distance={7} />
       <pointLight position={[2.5, 2.5, -1.5]} intensity={8} color="#42d4ef" distance={7} />
-      <FlashMark onReady={onReady} />
+      <FlashOrbitMark onReady={onReady} />
     </>
   );
 }
@@ -276,7 +276,7 @@ export function HeroScene({ onCanvasReady }: HeroSceneProps) {
       <motion.button
         type="button"
         className="hero-scene-control"
-        aria-label={alternate ? "Show Flash mark front view" : "Explore Flash mark 3D angle"}
+        aria-label={alternate ? "Show Flash Orbit mark front view" : "Explore Flash Orbit mark 3D angle"}
         aria-pressed={alternate}
         onClick={toggleView}
         whileTap={{ scale: 0.96 }}

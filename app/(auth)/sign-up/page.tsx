@@ -4,9 +4,9 @@ import { AuthForm } from "@/components/auth/auth-form";
 export default function SignUpPage() {
   return (
     <section className="auth-card">
-      <Link className="auth-brand" href="/">Flash</Link>
+      <Link className="auth-brand" href="/">Flash Orbit</Link>
       <div>
-        <span className="auth-eyebrow">Start with Flash</span>
+        <span className="auth-eyebrow">Start with Flash Orbit</span>
         <h1>Create your account</h1>
         <p>Set up the account you will use to run and switch businesses.</p>
       </div>

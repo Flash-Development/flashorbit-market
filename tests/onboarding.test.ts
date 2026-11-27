@@ -21,7 +21,7 @@ test("onboarding rejects duplicate slugs and existing users skip a second worksp
   const suffix = crypto.randomUUID().slice(0, 8);
   const principal = {
     userId: `onboard-${suffix}`,
-    email: `onboard-${suffix}@flash.test`,
+    email: `onboard-${suffix}@flash-orbit.test`,
   };
   const first = await createOnboardingWorkspace(
     principal.userId,
@@ -32,7 +32,7 @@ test("onboarding rejects duplicate slugs and existing users skip a second worksp
   await assert.rejects(
     createOnboardingWorkspace(
       `second-${suffix}`,
-      `second-${suffix}@flash.test`,
+      `second-${suffix}@flash-orbit.test`,
       "Duplicate Store",
       first.slug,
     ),
@@ -62,7 +62,7 @@ test("createWorkspace rejects a second workspace for the same principal", async 
   const suffix = crypto.randomUUID().slice(0, 8);
   const principal = {
     userId: `one-workspace-${suffix}`,
-    email: `one-workspace-${suffix}@flash.test`,
+    email: `one-workspace-${suffix}@flash-orbit.test`,
   };
   await createOnboardingWorkspace(
     principal.userId,
@@ -89,7 +89,7 @@ test("concurrent workspace creation is reduced to one result", async (context) =
   const suffix = crypto.randomUUID().slice(0, 8);
   const principal = {
     userId: `concurrent-${suffix}`,
-    email: `concurrent-${suffix}@flash.test`,
+    email: `concurrent-${suffix}@flash-orbit.test`,
   };
   const outcomes = await Promise.allSettled([
     createOnboardingWorkspace(

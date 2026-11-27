@@ -49,7 +49,7 @@ export function OnboardingForm() {
       <label>
         <span>Preferred workspace URL</span>
         <div className="slug-input">
-          <span>flash.app/</span>
+          <span>flashorbit.xyz/</span>
           <input name="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="lagos-goods" />
         </div>
       </label>

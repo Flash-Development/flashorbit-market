@@ -97,7 +97,7 @@ export function FinancialManagement() {
             </div>
           </div>
         </div>
-        <p className="finance-disclaimer">Illustrative dashboard concept only. Flash is in development; financial calculations, reconciliation, and availability have not been released.</p>
+        <p className="finance-disclaimer">Illustrative dashboard concept only. Flash Orbit is in development; financial calculations, reconciliation, and availability have not been released.</p>
       </div>
     </section>
   );

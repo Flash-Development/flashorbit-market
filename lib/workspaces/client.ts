@@ -6,6 +6,13 @@ export type WorkspaceClient = {
   workspace: PrismaClient["workspace"];
   membership: PrismaClient["membership"];
   store: PrismaClient["store"];
+  profile: PrismaClient["profile"];
+  product: PrismaClient["product"];
+  productVariant: PrismaClient["productVariant"];
+  auditLog: PrismaClient["auditLog"];
+  workspaceInvitation: PrismaClient["workspaceInvitation"];
+  workspaceSubscription: PrismaClient["workspaceSubscription"];
+  workspaceUsage: PrismaClient["workspaceUsage"];
   $transaction: PrismaClient["$transaction"];
 };
 

@@ -38,7 +38,7 @@ export function Pricing() {
         <SectionHeading
           eyebrow="Pricing direction"
           title="Plans shaped around how you grow."
-          description="Flash is being built Nigeria first. Plan structure and pricing will be shared when availability is confirmed."
+          description="Flash Orbit is being built Nigeria first. Plan structure and pricing will be shared when availability is confirmed."
         />
         <div className="pricing-grid">
           {plans.map((plan) => (

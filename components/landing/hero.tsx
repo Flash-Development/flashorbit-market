@@ -24,7 +24,7 @@ export function Hero() {
           </p>
           <div className="hero-ctas" data-hero-support>
             <a className="button button--primary" href="#dashboard">
-              Explore Flash <ArrowUpRight size={16} aria-hidden="true" />
+              Explore Flash Orbit <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <a className="button button--text hero-secondary-cta" href="#how-it-works">
               See how it works <ArrowDown size={15} aria-hidden="true" />
@@ -41,7 +41,7 @@ export function Hero() {
             ONE CLEAR VIEW OF YOUR BUSINESS
           </div>
           <HeroExperience />
-          <div className="hero-product-card" role="group" aria-label="Illustrative Flash dashboard snapshot">
+          <div className="hero-product-card" role="group" aria-label="Illustrative Flash Orbit dashboard snapshot">
             <div className="hero-product-card-top">
               <span className="hero-card-store"><span className="hero-card-mark">F</span> Sample Store</span>
               <span className="hero-card-demo">DEMO DATA</span>

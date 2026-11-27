@@ -15,6 +15,7 @@ export const reservedWorkspaceSlugs = new Set([
   "auth",
   "billing",
   "flash",
+  "flash-orbit",
   "help",
   "login",
   "onboarding",
@@ -33,7 +34,7 @@ export function normalizeWorkspaceSlug(value: string) {
 
 export function generateWorkspaceSlug(name: string) {
   const normalized = normalizeWorkspaceSlug(name);
-  if (!normalized.success) return "flash-store";
+  if (!normalized.success) return "flash-orbit-store";
   return normalized.data;
 }
 

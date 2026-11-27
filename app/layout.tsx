@@ -9,19 +9,19 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Flash — Run your store. Know your numbers.",
+  title: "Flash Orbit — Run your store. Know your numbers.",
   description:
-    "Commerce, inventory and financial management for ambitious businesses. Flash is being built Nigeria first, with Africa next.",
+    "Commerce, inventory and financial management for ambitious businesses. Flash Orbit is being built Nigeria first, with Africa next.",
   openGraph: {
-    title: "Flash — Run your store. Know your numbers.",
+    title: "Flash Orbit — Run your store. Know your numbers.",
     description:
       "Commerce, inventory and financial management for ambitious businesses. Nigeria first, Africa next.",
-    siteName: "Flash",
+    siteName: "Flash Orbit",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flash — Run your store. Know your numbers.",
+    title: "Flash Orbit — Run your store. Know your numbers.",
     description:
       "Commerce, inventory and financial management for ambitious businesses. Nigeria first, Africa next.",
   },

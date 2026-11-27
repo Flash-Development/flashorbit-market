@@ -78,7 +78,7 @@ export async function sendVerificationEmail(
   const payload = {
     from: config.from,
     to: email.email,
-    subject: "Verify your Flash account",
+    subject: "Verify your Flash Orbit account",
     template: {
       id: config.verificationTemplateId,
       variables: {

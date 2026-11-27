@@ -1,9 +1,9 @@
-# Flash — Phase 1: Marketing Landing Page
+# Flash Orbit — Phase 1: Marketing Landing Page
 
-Use the Flash Orchestrator first. This task is limited to the public marketing website.
+Use the Flash Orbit Orchestrator first. This task is limited to the public marketing website.
 
 ## Product
-Flash is a multi-tenant commerce, inventory, and financial-management platform.
+Flash Orbit is a multi-tenant commerce, inventory, and financial-management platform.
 Target market: Nigeria first, Africa next.
 Brand direction: premium minimal SaaS, globally credible, mobile-first.
 

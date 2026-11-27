@@ -80,7 +80,7 @@ export function HeroExperience() {
       className={`hero-scene${canvasReady && !prefersReducedMotion ? " hero-scene--ready" : ""}`}
       ref={rootRef}
       role="group"
-      aria-label="Flash brand illustration"
+      aria-label="Flash Orbit brand illustration"
       data-hero-scene
     >
       <StaticHeroMark />

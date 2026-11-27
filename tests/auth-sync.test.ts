@@ -9,7 +9,7 @@ test("identity synchronization creates one local user and external identity", as
   const suffix = crypto.randomUUID();
   const identity = {
     id: `provider-${suffix}`,
-    email: `identity-${suffix}@flash.test`,
+    email: `identity-${suffix}@flash-orbit.test`,
     name: "Sync User",
     emailVerified: true,
   };
@@ -31,7 +31,7 @@ test("unverified identities do not link to existing email identities", async (co
   const prisma = testClient();
   context.after(() => prisma.$disconnect());
   const suffix = crypto.randomUUID();
-  const email = `unverified-${suffix}@flash.test`;
+  const email = `unverified-${suffix}@flash-orbit.test`;
   await prisma.user.create({
     data: { id: `existing-${suffix}`, email, status: "ACTIVE" },
   });
@@ -62,7 +62,7 @@ test("unverified identities cannot create local users", async (context) => {
   const suffix = crypto.randomUUID();
   const identity = {
     id: `provider-${suffix}`,
-    email: `unverified-new-${suffix}@flash.test`,
+    email: `unverified-new-${suffix}@flash-orbit.test`,
     name: "Unverified User",
     emailVerified: false,
   };
@@ -80,7 +80,7 @@ test("suspended local users are not reactivated by identity sync", async (contex
   const prisma = testClient();
   context.after(() => prisma.$disconnect());
   const suffix = crypto.randomUUID();
-  const email = `suspended-${suffix}@flash.test`;
+  const email = `suspended-${suffix}@flash-orbit.test`;
   const existing = await prisma.user.create({
     data: { id: `user-${suffix}`, email, status: "SUSPENDED" },
   });

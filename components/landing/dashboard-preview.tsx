@@ -65,7 +65,7 @@ function DashboardSidebar() {
 
   return (
     <aside className="dashboard-sidebar">
-      <div className="dashboard-logo"><span className="mini-brand-mark">F</span><span>Flash</span></div>
+      <div className="dashboard-logo"><span className="mini-brand-mark">F</span><span>Flash Orbit</span></div>
       <div className="store-switcher"><span className="store-switcher-icon"><ShoppingBag size={14} /></span><span><b>Sample Store</b><small>Demo workspace</small></span><ChevronDown size={14} /></div>
       <nav aria-label="Sample dashboard navigation">
         {navGroups.map((group) => (
@@ -164,7 +164,7 @@ export function DashboardPreview() {
         <SectionHeading
           eyebrow="Inside the platform"
           title="One clear view of the work behind every sale."
-          description="An illustrative Flash workspace for revenue, orders, stock, and product performance."
+          description="An illustrative Flash Orbit workspace for revenue, orders, stock, and product performance."
         />
         <div className="dashboard-frame">
           <DashboardSidebar />
@@ -251,7 +251,7 @@ export function DashboardPreview() {
             </div>
           </div>
         </div>
-        <p className="dashboard-disclaimer">Product interface is illustrative. Flash is in development; no live store, inventory, order, or financial data is connected.</p>
+        <p className="dashboard-disclaimer">Product interface is illustrative. Flash Orbit is in development; no live store, inventory, order, or financial data is connected.</p>
       </div>
     </section>
   );

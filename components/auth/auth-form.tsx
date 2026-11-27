@@ -16,47 +16,6 @@ export function AuthForm({ mode, emailVerified = false }: AuthFormProps) {
   const [notice, setNotice] = useState(
     emailVerified && mode === "signin" ? "Email verified. You can now sign in." : "",
   );
-  const [verificationEmail, setVerificationEmail] = useState("");
-
-  async function requestVerificationEmail(
-    email: string,
-    successMessage: string,
-    failureMessage: string,
-  ) {
-    try {
-      const callbackURL = `${window.location.origin}/sign-in?verified=1`;
-      const result = await authClient.sendVerificationEmail({ email, callbackURL });
-      if (result.error) {
-        setError(
-          result.error.status === 503
-            ? "Email delivery is temporarily unavailable. Your account is saved; please try again shortly."
-            : failureMessage,
-        );
-        return;
-      }
-      setError("");
-      setNotice(successMessage);
-    } catch {
-      setError(failureMessage);
-    }
-  }
-
-  async function resendVerificationEmail() {
-    if (!verificationEmail) return;
-    setPending(true);
-    setError("");
-    setNotice("");
-    try {
-      await requestVerificationEmail(
-        verificationEmail,
-        "A new verification link was requested. Check your inbox.",
-        "We couldn't send another verification link. Please try again later.",
-      );
-    } finally {
-      setPending(false);
-    }
-  }
-
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
@@ -67,12 +26,21 @@ export function AuthForm({ mode, emailVerified = false }: AuthFormProps) {
       const email = String(form.get("email") ?? "").trim();
       const password = String(form.get("password") ?? "");
       const name = String(form.get("name") ?? "").trim();
+      const pendingInvitation = window.sessionStorage.getItem("flash-orbit-pending-invitation");
+      const verificationCallback = new URL("/sign-in", window.location.origin);
+      verificationCallback.searchParams.set("verified", "1");
+      if (pendingInvitation) {
+        verificationCallback.searchParams.set(
+          "next",
+          `/invitations/accept?token=${encodeURIComponent(pendingInvitation)}`,
+        );
+      }
       const result = mode === "signup"
         ? await authClient.signUp.email({
             email,
             password,
             name,
-            callbackURL: `${window.location.origin}/sign-in?verified=1`,
+            callbackURL: verificationCallback.toString(),
           })
         : await authClient.signIn.email({ email, password });
       if (result.error) {
@@ -82,9 +50,21 @@ export function AuthForm({ mode, emailVerified = false }: AuthFormProps) {
       if (mode === "signin") {
         const next = new URLSearchParams(window.location.search).get("next");
         let safeNext = "/dashboard";
-        if (next) {
+        if (pendingInvitation) {
+          safeNext = "/invitations/accept";
+        } else if (next) {
           try {
             const decoded = decodeURIComponent(next);
+            const invitationRoute = new URL(decoded, window.location.origin);
+            const invitationToken = invitationRoute.searchParams.get("token");
+            if (
+              invitationRoute.origin === window.location.origin &&
+              invitationRoute.pathname === "/invitations/accept" &&
+              invitationToken &&
+              /^[A-Za-z0-9_-]{20,100}$/.test(invitationToken)
+            ) {
+              safeNext = `${invitationRoute.pathname}?token=${encodeURIComponent(invitationToken)}`;
+            } else
             if (
               decoded.startsWith("/") &&
               !decoded.startsWith("//") &&
@@ -99,11 +79,8 @@ export function AuthForm({ mode, emailVerified = false }: AuthFormProps) {
         }
         router.replace(safeNext);
       } else {
-        setVerificationEmail(email);
-        await requestVerificationEmail(
-          email,
-          "Check your inbox for a verification link. If it doesn't arrive, request another below.",
-          "Your account is saved, but we couldn't send a verification link. Please try again below.",
+        setNotice(
+          "Check your inbox for a verification link. You can sign in once your email is verified.",
         );
       }
     } catch {
@@ -134,16 +111,6 @@ export function AuthForm({ mode, emailVerified = false }: AuthFormProps) {
       <button className="auth-submit" type="submit" disabled={pending}>
         {pending ? "Please wait…" : mode === "signup" ? "Create account" : "Sign in"}
       </button>
-      {verificationEmail ? (
-        <button
-          className="auth-resend"
-          type="button"
-          onClick={resendVerificationEmail}
-          disabled={pending}
-        >
-          Resend verification email
-        </button>
-      ) : null}
     </form>
   );
 }

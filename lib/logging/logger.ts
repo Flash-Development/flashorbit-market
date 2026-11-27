@@ -48,7 +48,7 @@ function write(level: LogLevel, event: string, fields: LogFields = {}) {
   const entry = {
     timestamp: new Date().toISOString(),
     level,
-    service: "flash",
+    service: "flash-orbit",
     event,
     ...redact(fields) as LogFields,
   };

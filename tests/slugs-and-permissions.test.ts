@@ -8,9 +8,13 @@ import {
 import { roleCan } from "../lib/authz/permissions";
 
 test("workspace slugs normalize and reserved names are rejected", () => {
-  assert.equal(normalizeWorkspaceSlug("Flash Store")?.success, true);
+  assert.equal(normalizeWorkspaceSlug("Flash Orbit Store")?.success, true);
   assert.deepEqual(
     assertAvailableWorkspaceSlug("admin"),
+    { success: false, error: "This workspace slug is reserved." },
+  );
+  assert.deepEqual(
+    assertAvailableWorkspaceSlug("flash-orbit"),
     { success: false, error: "This workspace slug is reserved." },
   );
   assert.equal(generateWorkspaceSlug("Lagos Goods"), "lagos-goods");
@@ -21,4 +25,6 @@ test("permission matrix denies owner-only actions from staff", () => {
   assert.equal(roleCan("ADMIN", "workspace:delete"), false);
   assert.equal(roleCan("MANAGER", "membership:update"), false);
   assert.equal(roleCan("STAFF", "workspace:update"), false);
+  assert.equal(roleCan("STAFF", "catalog:manage"), false);
+  assert.equal(roleCan("STAFF", "inventory:manage"), false);
 });

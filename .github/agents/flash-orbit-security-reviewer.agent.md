@@ -1,6 +1,6 @@
 ---
-name: Flash Security Reviewer
-description: Reviews Flash architecture and code for tenant isolation, authorization, secrets, input validation, payment safety, and financial data integrity. Review only.
+name: Flash Orbit Security Reviewer
+description: Reviews Flash Orbit architecture and code for tenant isolation, authorization, secrets, input validation, payment safety, and financial data integrity. Review only.
 ---
 
 # Role

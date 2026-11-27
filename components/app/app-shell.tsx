@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   BarChart3,
@@ -10,20 +9,19 @@ import {
   LayoutDashboard,
   Package,
   Settings,
-  ShoppingBag,
   ShoppingCart,
   Users,
   LogOut,
   Menu,
   X,
 } from "lucide-react";
-import { authClient } from "@/lib/auth/client";
-
+import { WorkspaceSwitcher } from "@/components/app/workspace-switcher";
 type AppShellProps = {
   children: ReactNode;
   workspaceName: string;
-  workspaceSlug: string;
   role: string;
+  workspaces: { id: string; name: string; slug: string }[];
+  activeWorkspaceId: string;
 };
 
 const navigation = [
@@ -40,10 +38,10 @@ const navigation = [
 export function AppShell({
   children,
   workspaceName,
-  workspaceSlug,
   role,
+  workspaces,
+  activeWorkspaceId,
 }: AppShellProps) {
-  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [signOutError, setSignOutError] = useState("");
   const sidebarRef = useRef<HTMLElement>(null);
@@ -121,12 +119,17 @@ export function AppShell({
   const signOut = async () => {
     setSignOutError("");
     try {
-      const result = await authClient.signOut();
-      if (result.error) {
+      const response = await fetch("/api/auth/sign-out", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: "{}",
+      });
+      if (!response.ok) {
         setSignOutError("Sign-out failed. Please try again.");
         return;
       }
-      router.replace("/");
+      window.location.replace("/");
     } catch {
       setSignOutError("Sign-out failed. Please try again.");
     }
@@ -145,7 +148,7 @@ export function AppShell({
       >
         <div className="app-sidebar-head">
           <Link className="app-brand" href="/dashboard" onClick={() => setMenuOpen(false)}>
-            <span>F</span>Flash
+            <span>F</span>Flash Orbit
           </Link>
           <button
             className="app-menu-close"
@@ -156,10 +159,10 @@ export function AppShell({
             <X size={18} />
           </button>
         </div>
-        <div className="workspace-switcher" role="group" aria-label="Current workspace">
-          <span className="workspace-icon" aria-hidden="true"><ShoppingBag size={16} /></span>
-          <span><b>{workspaceName}</b><small>{workspaceSlug}</small></span>
-        </div>
+        <WorkspaceSwitcher
+          workspaces={workspaces}
+          activeWorkspaceId={activeWorkspaceId}
+        />
         <nav className="app-navigation" aria-label="Dashboard navigation">
           {navigation.map(({ label, href, icon: Icon }) => (
             <Link href={href} key={label} onClick={() => setMenuOpen(false)}>

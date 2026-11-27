@@ -53,3 +53,49 @@ export const StoreStatus = {
 } as const
 
 export type StoreStatus = (typeof StoreStatus)[keyof typeof StoreStatus]
+
+
+export const CatalogStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type CatalogStatus = (typeof CatalogStatus)[keyof typeof CatalogStatus]
+
+
+export const InventoryMovementType = {
+  INITIAL: 'INITIAL',
+  INBOUND: 'INBOUND',
+  OUTBOUND: 'OUTBOUND',
+  ADJUSTMENT: 'ADJUSTMENT'
+} as const
+
+export type InventoryMovementType = (typeof InventoryMovementType)[keyof typeof InventoryMovementType]
+
+
+export const InvitationStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REVOKED: 'REVOKED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type InvitationStatus = (typeof InvitationStatus)[keyof typeof InvitationStatus]
+
+
+export const SubscriptionStatus = {
+  ACTIVE: 'ACTIVE',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SubscriptionStatus = (typeof SubscriptionStatus)[keyof typeof SubscriptionStatus]
+
+
+export const WorkspaceUsageMetric = {
+  ACTIVE_MEMBERS: 'ACTIVE_MEMBERS',
+  ACTIVE_PRODUCTS: 'ACTIVE_PRODUCTS',
+  ACTIVE_VARIANTS: 'ACTIVE_VARIANTS'
+} as const
+
+export type WorkspaceUsageMetric = (typeof WorkspaceUsageMetric)[keyof typeof WorkspaceUsageMetric]

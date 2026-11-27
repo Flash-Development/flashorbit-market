@@ -84,6 +84,25 @@ export async function createWorkspace(
       where: { id: principal.userId },
       data: { workspaceId: workspace.id },
     });
+    await tx.workspaceSubscription.create({
+      data: {
+        workspaceId: workspace.id,
+        planCode: "FOUNDATION",
+        entitlements: {
+          features: ["workspace_settings", "team_management", "audit_log", "catalog", "inventory"],
+          limits: {},
+        },
+      },
+    });
+    await tx.auditLog.create({
+      data: {
+        workspaceId: workspace.id,
+        actorUserId: principal.userId,
+        action: "workspace.created",
+        targetType: "workspace",
+        targetId: workspace.id,
+      },
+    });
     return { ...workspace, memberships: [membership], stores: [store] };
   }, {
     maxWait: 10_000,

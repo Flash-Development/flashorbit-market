@@ -3,7 +3,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../generated/prisma/client";
 
 if (process.env.NODE_ENV === "production" ||
-    process.env.FLASH_DEV_SEED !== "1") {
+    process.env.FLASH_ORBIT_DEV_SEED !== "1") {
   throw new Error("Development seed is disabled.");
 }
 
@@ -17,18 +17,18 @@ const prisma = new PrismaClient({
 async function main() {
   const user = await prisma.user.upsert({
     where: { email: "owner@flash.local" },
-    update: { status: "ACTIVE", profile: { update: { name: "Flash Developer" } } },
+    update: { status: "ACTIVE", profile: { update: { name: "Flash Orbit Developer" } } },
     create: {
       id: "dev_owner",
       email: "owner@flash.local",
-      profile: { create: { name: "Flash Developer" } },
+      profile: { create: { name: "Flash Orbit Developer" } },
     },
   });
 
   const workspace = await prisma.workspace.upsert({
     where: { slug: "flash-demo" },
     update: {
-      name: "Flash Demo",
+      name: "Flash Orbit Demo",
       country: "NG",
       currency: "NGN",
       timezone: "Africa/Lagos",
@@ -36,7 +36,7 @@ async function main() {
     },
     create: {
       id: "flash_demo_workspace",
-      name: "Flash Demo",
+      name: "Flash Orbit Demo",
       slug: "flash-demo",
       country: "NG",
       currency: "NGN",
@@ -45,7 +45,7 @@ async function main() {
         create: { userId: user.id, role: "OWNER", status: "ACTIVE" },
       },
       stores: {
-        create: { name: "Flash Demo", slug: "flash-demo", ownerId: user.id },
+        create: { name: "Flash Orbit Demo", slug: "flash-demo", ownerId: user.id },
       },
     },
   });
@@ -71,13 +71,13 @@ async function main() {
     update: {
       workspaceId: workspace.id,
       ownerId: user.id,
-      name: "Flash Demo",
+      name: "Flash Orbit Demo",
       status: "ACTIVE",
     },
     create: {
       workspaceId: workspace.id,
       ownerId: user.id,
-      name: "Flash Demo",
+      name: "Flash Orbit Demo",
       slug: "flash-demo",
       status: "ACTIVE",
     },

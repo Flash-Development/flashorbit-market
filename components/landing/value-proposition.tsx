@@ -27,12 +27,12 @@ const pillars = [
 
 export function ValueProposition() {
   return (
-    <section className="value-section section-space" id="why-flash">
+    <section className="value-section section-space" id="why-flash-orbit">
       <div className="container">
         <SectionHeading
-          eyebrow="The Flash approach"
+          eyebrow="The Flash Orbit approach"
           title="The system behind every sale."
-          description="Your storefront is only one part of the business. Flash brings commerce, inventory, and financial management into one connected view."
+          description="Your storefront is only one part of the business. Flash Orbit brings commerce, inventory, and financial management into one connected view."
         />
         <div className="value-grid">
           {pillars.map(({ number, icon: Icon, title, text, tag }) => (

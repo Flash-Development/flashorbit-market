@@ -4,9 +4,9 @@ import { createLogger, getRequestId } from "../lib/logging/logger";
 
 test("request logging uses a supplied correlation id", () => {
   const request = new Request("http://localhost/api/workspaces", {
-    headers: { "x-request-id": "flash-request-123" },
+    headers: { "x-request-id": "flash-orbit-request-123" },
   });
-  assert.equal(getRequestId(request), "flash-request-123");
+  assert.equal(getRequestId(request), "flash-orbit-request-123");
 });
 
 test("request logging creates a correlation id when absent", () => {
@@ -16,7 +16,7 @@ test("request logging creates a correlation id when absent", () => {
 
 test("logger is constructible with redaction-sensitive fields", () => {
   const logger = createLogger({
-    requestId: "flash-request-123",
+    requestId: "flash-orbit-request-123",
     authorization: "Bearer secret",
   });
   assert.equal(typeof logger.info, "function");

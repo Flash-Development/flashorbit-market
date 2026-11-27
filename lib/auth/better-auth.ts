@@ -16,7 +16,7 @@ if (!baseURL) {
   throw new Error("BETTER_AUTH_URL must be configured.");
 }
 if ((!secret || secret.length < 32) && isProductionBuild) {
-  secret = "flash-build-placeholder-secret-32chars";
+  secret = "flash-orbit-build-placeholder-secret-32chars";
 }
 if (!secret || secret.length < 32) {
   throw new Error("BETTER_AUTH_SECRET must contain at least 32 characters.");
@@ -39,7 +39,7 @@ export const auth = betterAuth({
     autoSignIn: false,
   },
   emailVerification: {
-    sendOnSignUp: false,
+    sendOnSignUp: true,
     autoSignInAfterVerification: false,
     expiresIn: 60 * 60,
     sendVerificationEmail: async ({ user, url }) => {

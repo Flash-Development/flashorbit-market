@@ -3,7 +3,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@/generated/prisma/client";
 
 const globalForPrisma = globalThis as unknown as {
-  flashPrisma?: PrismaClient;
+  flashOrbitPrisma?: PrismaClient;
 };
 
 export function createPrismaClient(databaseUrl = process.env.DATABASE_URL) {
@@ -14,9 +14,9 @@ export function createPrismaClient(databaseUrl = process.env.DATABASE_URL) {
 
 export const prisma =
   process.env.DATABASE_URL
-    ? globalForPrisma.flashPrisma ?? createPrismaClient()
+    ? globalForPrisma.flashOrbitPrisma ?? createPrismaClient()
     : undefined as unknown as PrismaClient;
 
 if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.flashPrisma = prisma;
+  globalForPrisma.flashOrbitPrisma = prisma;
 }
