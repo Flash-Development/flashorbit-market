@@ -84,13 +84,25 @@ export async function createCategory(
     throw new CatalogInputError("Description must be 500 characters or fewer.");
   }
   try {
-    return await client.category.create({
-      data: {
-        workspaceId,
-        name: value.name,
-        slug: value.slug,
-        description: description || null,
-      },
+    return await client.$transaction(async (tx) => {
+      const category = await tx.category.create({
+        data: {
+          workspaceId,
+          name: value.name,
+          slug: value.slug,
+          description: description || null,
+        },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId,
+          actorUserId: userId,
+          action: "catalog.category_created",
+          targetType: "category",
+          targetId: category.id,
+        },
+      });
+      return category;
     });
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "P2002") {
@@ -125,16 +137,28 @@ export async function createProduct(
     if (!category) throw new CatalogInputError("Choose a valid category.");
   }
   try {
-    return await client.product.create({
-      data: {
-        workspaceId,
-        categoryId: input.categoryId || null,
-        name: value.name,
-        slug: value.slug,
-        description: description || null,
-        basePrice: priceValue(input.basePrice),
-        currency: "NGN",
-      },
+    return await client.$transaction(async (tx) => {
+      const product = await tx.product.create({
+        data: {
+          workspaceId,
+          categoryId: input.categoryId || null,
+          name: value.name,
+          slug: value.slug,
+          description: description || null,
+          basePrice: priceValue(input.basePrice),
+          currency: "NGN",
+        },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId,
+          actorUserId: userId,
+          action: "catalog.product_created",
+          targetType: "product",
+          targetId: product.id,
+        },
+      });
+      return product;
     });
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "P2002") {
@@ -165,14 +189,26 @@ export async function createVariant(
     throw new CatalogInputError("Enter a valid SKU.");
   }
   try {
-    return await client.productVariant.create({
-      data: {
-        workspaceId,
-        productId,
-        name,
-        sku,
-        price: priceValue(input.price),
-      },
+    return await client.$transaction(async (tx) => {
+      const variant = await tx.productVariant.create({
+        data: {
+          workspaceId,
+          productId,
+          name,
+          sku,
+          price: priceValue(input.price),
+        },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId,
+          actorUserId: userId,
+          action: "catalog.variant_created",
+          targetType: "product_variant",
+          targetId: variant.id,
+        },
+      });
+      return variant;
     });
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "P2002") {
@@ -202,13 +238,25 @@ export async function updateCategory(
     throw new CatalogInputError("Description must be 500 characters or fewer.");
   }
   try {
-    return await client.category.update({
-      where: { id: categoryId },
-      data: {
-        ...(value ? { name: value.name, slug: value.slug } : {}),
-        ...(input.description !== undefined ? { description: description || null } : {}),
-        ...(input.status ? { status: input.status } : {}),
-      },
+    return await client.$transaction(async (tx) => {
+      const category = await tx.category.update({
+        where: { id: categoryId },
+        data: {
+          ...(value ? { name: value.name, slug: value.slug } : {}),
+          ...(input.description !== undefined ? { description: description || null } : {}),
+          ...(input.status ? { status: input.status } : {}),
+        },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId,
+          actorUserId: userId,
+          action: "catalog.category_updated",
+          targetType: "category",
+          targetId: categoryId,
+        },
+      });
+      return category;
     });
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "P2002") {
@@ -251,15 +299,27 @@ export async function updateProduct(
     if (!category) throw new CatalogInputError("Choose a valid category.");
   }
   try {
-    return await client.product.update({
-      where: { id: productId },
-      data: {
-        ...(value ? { name: value.name, slug: value.slug } : {}),
-        ...(input.description !== undefined ? { description: description || null } : {}),
-        ...(input.basePrice !== undefined ? { basePrice: priceValue(input.basePrice) } : {}),
-        ...(input.categoryId !== undefined ? { categoryId: input.categoryId } : {}),
-        ...(input.status ? { status: input.status } : {}),
-      },
+    return await client.$transaction(async (tx) => {
+      const product = await tx.product.update({
+        where: { id: productId },
+        data: {
+          ...(value ? { name: value.name, slug: value.slug } : {}),
+          ...(input.description !== undefined ? { description: description || null } : {}),
+          ...(input.basePrice !== undefined ? { basePrice: priceValue(input.basePrice) } : {}),
+          ...(input.categoryId !== undefined ? { categoryId: input.categoryId } : {}),
+          ...(input.status ? { status: input.status } : {}),
+        },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId,
+          actorUserId: userId,
+          action: "catalog.product_updated",
+          targetType: "product",
+          targetId: productId,
+        },
+      });
+      return product;
     });
   } catch (error) {
     if (error instanceof Error && "code" in error && error.code === "P2002") {

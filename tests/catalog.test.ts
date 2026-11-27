@@ -60,6 +60,11 @@ test("catalog creates categories products variants within a workspace", async (c
   assert.equal(catalog.products.length, 1);
   assert.equal(catalog.products[0]?.variants[0]?.id, variant.id);
   assert.equal(catalog.products[0]?.category?.id, category.id);
+  const audit = await prisma.auditLog.findMany({ where: { workspaceId: workspace.id } });
+  assert.deepEqual(
+    audit.map((entry) => entry.action).filter((action) => action.startsWith("catalog.")).sort(),
+    ["catalog.category_created", "catalog.product_created", "catalog.variant_created"],
+  );
   await prisma.workspace.delete({ where: { id: workspace.id } });
 });
 

@@ -98,6 +98,8 @@ A task is not complete merely because code was written. It is complete when:
 - The final response lists changed files and validation outcomes.
 
 ## Current phase boundary
-The initial milestone is the public marketing landing page only.
-Do not add authentication, tenant provisioning, database schemas, payment processing,
-seller dashboard routes, or backend APIs until those phases are explicitly approved.
+The public marketing page, authentication foundation, catalog, and inventory are
+existing milestones. Phase 2B is workspace operations: teams, invitations, membership
+administration, workspace settings, audit history, and provider-free subscription
+entitlements and usage snapshots. Do not add billing, orders, payments, or financial
+operations until those phases are explicitly approved.

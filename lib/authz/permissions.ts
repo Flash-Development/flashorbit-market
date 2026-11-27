@@ -47,7 +47,7 @@ const permissions: Record<MembershipRole, ReadonlySet<Capability>> = {
     "audit:read",
     "subscription:read",
   ]),
-  MANAGER: new Set(["workspace:read", "membership:read", "catalog:read", "catalog:manage", "inventory:read", "inventory:manage", "audit:read", "subscription:read"]),
+  MANAGER: new Set(["workspace:read", "membership:read", "catalog:read", "catalog:manage", "inventory:read", "inventory:manage"]),
   STAFF: new Set(["workspace:read", "membership:read", "catalog:read", "inventory:read"]),
 };
 

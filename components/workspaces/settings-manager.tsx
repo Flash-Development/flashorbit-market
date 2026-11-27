@@ -19,6 +19,7 @@ type AuditEntry = {
   actorName: string;
   createdAt: Date;
 };
+type EntitlementFeatures = { features?: unknown };
 
 export function WorkspaceSettingsManager({
   workspace: initialWorkspace,
@@ -29,7 +30,7 @@ export function WorkspaceSettingsManager({
   canReadAudit,
 }: {
   workspace: Workspace;
-  subscription: { planCode: string; status: string; entitlements: unknown };
+  subscription: { planCode: string; status: string; entitlements: unknown } | null;
   usage: Usage[];
   auditLogs: AuditEntry[];
   canManage: boolean;
@@ -40,10 +41,13 @@ export function WorkspaceSettingsManager({
   const [notice, setNotice] = useState("");
   const [pending, setPending] = useState(false);
   const router = useRouter();
-  const entitlements = subscription.entitlements;
-  const features = entitlements && typeof entitlements === "object" &&
-    "features" in entitlements && Array.isArray(entitlements.features)
-    ? entitlements.features.filter((feature): feature is string => typeof feature === "string")
+  const entitlements = subscription?.entitlements;
+  const featureValues = entitlements && typeof entitlements === "object" &&
+    "features" in entitlements
+    ? (entitlements as EntitlementFeatures).features
+    : null;
+  const features = Array.isArray(featureValues)
+    ? featureValues.filter((feature): feature is string => typeof feature === "string")
     : [];
 
   async function save(event: FormEvent<HTMLFormElement>) {
@@ -89,14 +93,16 @@ export function WorkspaceSettingsManager({
         <label><span>Time zone</span><input name="timezone" required maxLength={100} defaultValue={workspace.timezone} disabled={!canManage} /></label>
         {canManage ? <button type="submit" disabled={pending}>{pending ? "Saving…" : "Save settings"}</button> : <p className="catalog-read-only" role="status">You have read-only access to workspace settings.</p>}
       </form>
-      <section className="workspace-ops-panel">
-        <h2>Subscription foundation</h2>
-        <p><strong>{subscription.planCode}</strong> · {subscription.status}</p>
-        <p>No billing provider or usage limits are configured. Usage is measured for planning and is not quota-enforced.</p>
-        <ul className="workspace-entitlement-list">
-          {features.map((feature) => <li key={feature}>{feature.replaceAll("_", " ")}</li>)}
-        </ul>
-      </section>
+      {subscription ? (
+        <section className="workspace-ops-panel">
+          <h2>Subscription foundation</h2>
+          <p><strong>{subscription.planCode}</strong> · {subscription.status}</p>
+          <p>No billing provider or usage limits are configured. Usage is measured for planning and is not quota-enforced.</p>
+          <ul className="workspace-entitlement-list">
+            {features.map((feature) => <li key={feature}>{feature.replaceAll("_", " ")}</li>)}
+          </ul>
+        </section>
+      ) : <p className="catalog-read-only" role="status">Subscription details are available to workspace administrators.</p>}
       <section className="workspace-ops-panel">
         <h2>Usage history</h2>
         {usage.length ? usage.map((entry) => (

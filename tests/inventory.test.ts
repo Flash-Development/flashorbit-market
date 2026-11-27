@@ -87,6 +87,8 @@ test("inventory adjustment is atomic and records append-only movements", async (
   assert.equal(movements.length, 2);
   assert.equal(movements[0]?.quantityBefore, 25);
   assert.equal(movements[0]?.quantityAfter, 18);
+  const audit = await prisma.auditLog.findMany({ where: { workspaceId: workspace.id } });
+  assert.equal(audit.filter((entry) => entry.action === "inventory.adjusted").length, 2);
 
   await prisma.workspace.delete({ where: { id: workspace.id } });
 });

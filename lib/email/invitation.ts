@@ -31,7 +31,7 @@ export async function sendWorkspaceInvitation(input: {
   const result = await new Resend(apiKey).emails.send({
     from,
     to: input.email,
-    subject: `Invitation to join ${input.workspaceName} on Flash Orbit`,
+    subject: `Invitation to join ${input.workspaceName.replace(/[\r\n]/g, " ")} on Flash Orbit`,
     html: `<p>You have been invited to join <strong>${workspaceName}</strong> as ${role}.</p><p><a href="${url}">Accept invitation</a></p><p>This link expires in 7 days.</p>`,
     text: `You have been invited to join ${input.workspaceName} as ${input.role}. Accept: ${input.url} (expires in 7 days)`,
   }, { signal: AbortSignal.timeout(10_000) });

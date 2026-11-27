@@ -38,7 +38,6 @@ export function InvitationAcceptance({ token: initialToken }: { token: string })
       window.sessionStorage.removeItem(storageKey);
       setStatus("Invitation accepted. Opening your workspace…");
       router.replace("/dashboard");
-      router.refresh();
     }).catch((error: unknown) => {
       if (active) setStatus(error instanceof Error ? error.message : "Invitation could not be accepted.");
     });

@@ -73,11 +73,13 @@ export async function getWorkspaceOperations(
       currency: workspace.currency,
       timezone: workspace.timezone,
     },
-    subscription: {
-      planCode: subscription.planCode,
-      status: subscription.status,
-      entitlements: subscription.entitlements,
-    },
+    subscription: roleCan(membership.role, "subscription:read")
+      ? {
+          planCode: subscription.planCode,
+          status: subscription.status,
+          entitlements: subscription.entitlements,
+        }
+      : null,
     usage,
     auditLogs: auditLogs.map(({ actor, ...entry }) => ({
       ...entry,

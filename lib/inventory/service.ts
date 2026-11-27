@@ -157,6 +157,20 @@ export async function adjustInventory(
         createdBy: userId,
       },
     });
+    await tx.auditLog.create({
+      data: {
+        workspaceId,
+        actorUserId: userId,
+        action: "inventory.adjusted",
+        targetType: "product_variant",
+        targetId: variantId,
+        metadata: {
+          delta: input.delta,
+          quantityBefore: before,
+          quantityAfter: after,
+        },
+      },
+    });
     return balance;
   }, { maxWait: 10_000, timeout: 15_000 });
 }

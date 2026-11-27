@@ -30,6 +30,26 @@ database through `TEST_DATABASE_URL` or `DATABASE_URL`.
 `npm test` loads `.env` when present; tests require a reachable local PostgreSQL
 database through `TEST_DATABASE_URL` or `DATABASE_URL`.
 
+## Workspace operations
+
+The authenticated workspace app supports team membership, seven-day email
+invitations, role changes, workspace settings, workspace-scoped activity history,
+and daily snapshots for active members, products, and variants. Invitations are
+accepted only by a verified account with the invited email. Owners can invite
+admins, managers, and staff; admins can invite managers and staff. Only owners
+and admins can edit settings or view subscription details and audit history.
+
+The active workspace can be changed in the dashboard sidebar. Users can belong
+to multiple workspaces; role and tenant checks remain enforced by server-side
+services. The subscription record starts with `FOUNDATION` entitlements and
+does not represent a paid subscription. No payment provider or usage limits are
+configured or enforced.
+
+Workspace operations use `/api/workspaces/[slug]/members`,
+`/api/workspaces/[slug]/invitations`, `/api/workspaces/[slug]/settings`,
+`/api/workspaces/active`, and `/api/invitations/accept`. Invitation delivery
+uses the configured Resend sender and the app's `BETTER_AUTH_URL`.
+
 ## Local development infrastructure
 
 Copy `.env.example` to `.env`, then adjust the local-only database values:

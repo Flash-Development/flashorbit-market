@@ -30,6 +30,8 @@ export async function createWorkspaceInvitation(
   }
   const { workspace, membership } = await resolveMembership(actorUserId, slug, client);
   if (!canInvite(membership.role, role)) throw new WorkspaceAuthorizationError();
+  const baseUrl = process.env.BETTER_AUTH_URL;
+  if (!baseUrl) throw new Error("Invitation URL is not configured.");
   const existingUser = await client.user.findUnique({ where: { email } });
   if (existingUser) {
     const existingMembership = await client.membership.findUnique({
@@ -44,10 +46,32 @@ export async function createWorkspaceInvitation(
       "SELECT pg_advisory_xact_lock(hashtextextended($1, 0))",
       `${workspace.id}:${email}`,
     );
-    await tx.workspaceInvitation.updateMany({
+    if (existingUser) {
+      const currentMembership = await tx.membership.findUnique({
+        where: {
+          userId_workspaceId: {
+            userId: existingUser.id,
+            workspaceId: workspace.id,
+          },
+        },
+      });
+      if (currentMembership?.status === "ACTIVE") throw new WorkspaceConflictError();
+    }
+    const replaced = await tx.workspaceInvitation.updateMany({
       where: { workspaceId: workspace.id, email, status: "PENDING" },
       data: { status: "REVOKED" },
     });
+    if (replaced.count > 0) {
+      await tx.auditLog.create({
+        data: {
+          workspaceId: workspace.id,
+          actorUserId,
+          action: "invitation.replaced",
+          targetType: "invitation",
+          metadata: { count: replaced.count },
+        },
+      });
+    }
     const created = await tx.workspaceInvitation.create({
       data: {
         workspaceId: workspace.id,
@@ -70,19 +94,31 @@ export async function createWorkspaceInvitation(
     });
     return created;
   });
-  const baseUrl = process.env.BETTER_AUTH_URL;
-  if (!baseUrl) throw new Error("Invitation URL is not configured.");
   try {
     await sendEmail({
       email,
       workspaceName: workspace.name,
       role,
-      url: `${baseUrl}/invitations/accept?token=${encodeURIComponent(token)}`,
+      url: new URL(
+        `/invitations/accept?token=${encodeURIComponent(token)}`,
+        baseUrl,
+      ).toString(),
     });
   } catch (error) {
-    await client.workspaceInvitation.update({
-      where: { id: invitation.id },
-      data: { status: "REVOKED" },
+    await client.$transaction(async (tx) => {
+      await tx.workspaceInvitation.update({
+        where: { id: invitation.id },
+        data: { status: "REVOKED" },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId: workspace.id,
+          actorUserId,
+          action: "invitation.delivery_failed",
+          targetType: "invitation",
+          targetId: invitation.id,
+        },
+      });
     });
     throw error;
   }
@@ -96,6 +132,14 @@ export async function listWorkspaceInvitations(
 ) {
   const { workspace, membership } = await resolveMembership(userId, slug, client);
   if (!roleCan(membership.role, "membership:read")) throw new WorkspaceAuthorizationError();
+  await client.workspaceInvitation.updateMany({
+    where: {
+      workspaceId: workspace.id,
+      status: "PENDING",
+      expiresAt: { lte: new Date() },
+    },
+    data: { status: "EXPIRED" },
+  });
   return client.workspaceInvitation.findMany({
     where: { workspaceId: workspace.id, status: "PENDING" },
     select: { id: true, email: true, role: true, status: true, expiresAt: true, createdAt: true },
@@ -109,7 +153,7 @@ export async function revokeWorkspaceInvitation(
   invitationId: string,
   client: WorkspaceClient = prisma,
 ) {
-  return client.$transaction(async (tx) => {
+  const result = await client.$transaction(async (tx) => {
     const { workspace, membership } = await resolveMembership(actorUserId, slug, tx);
     if (!roleCan(membership.role, "membership:invite")) {
       throw new WorkspaceAuthorizationError();
@@ -119,6 +163,22 @@ export async function revokeWorkspaceInvitation(
     });
     if (!invitation || invitation.status !== "PENDING") {
       throw new WorkspaceInputError("Invitation is not pending.");
+    }
+    if (invitation.expiresAt <= new Date()) {
+      await tx.workspaceInvitation.update({
+        where: { id: invitation.id },
+        data: { status: "EXPIRED" },
+      });
+      await tx.auditLog.create({
+        data: {
+          workspaceId: workspace.id,
+          actorUserId,
+          action: "invitation.expired",
+          targetType: "invitation",
+          targetId: invitation.id,
+        },
+      });
+      return { expired: true as const };
     }
     const updated = await tx.workspaceInvitation.update({
       where: { id: invitation.id },
@@ -133,6 +193,8 @@ export async function revokeWorkspaceInvitation(
         targetId: invitation.id,
       },
     });
-    return updated;
+    return { expired: false as const, invitation: updated };
   });
+  if (result.expired) throw new WorkspaceInputError("Invitation has expired.");
+  return result.invitation;
 }

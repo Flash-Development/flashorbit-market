@@ -1,11 +1,18 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createWorkspaceInvitation } from "../lib/workspaces/invitations";
+import {
+  createWorkspaceInvitation,
+  listWorkspaceInvitations,
+  revokeWorkspaceInvitation,
+} from "../lib/workspaces/invitations";
 import { acceptWorkspaceInvitation } from "../lib/workspaces/invitation-acceptance";
 import { createWorkspace } from "../lib/workspaces/create";
 import { changeMembershipRole, removeWorkspaceMember } from "../lib/workspaces/membership";
 import { getWorkspaceOperations, updateWorkspaceSettings } from "../lib/workspaces/settings";
-import { WorkspaceAuthorizationError } from "../lib/workspaces/errors";
+import {
+  WorkspaceAuthorizationError,
+  WorkspaceNotFoundError,
+} from "../lib/workspaces/errors";
 import { testClient } from "./test-client";
 
 test("invitations authorize roles, require matching email, and add cross-workspace members", async (context) => {
@@ -29,10 +36,14 @@ test("invitations authorize roles, require matching email, and add cross-workspa
     await prisma.user.deleteMany({ where: { id: { in: [ownerId, targetId] } } });
     await prisma.$disconnect();
   });
+  const temporaryMembership = await prisma.membership.create({
+    data: { userId: targetId, workspaceId: owner.id, role: "STAFF" },
+  });
   await assert.rejects(
     changeMembershipRole(ownerId, owner.slug, targetId, "OWNER", prisma),
     WorkspaceAuthorizationError,
   );
+  await prisma.membership.delete({ where: { id: temporaryMembership.id } });
   const invite = await createWorkspaceInvitation(
     ownerId,
     owner.slug,
@@ -50,7 +61,12 @@ test("invitations authorize roles, require matching email, and add cross-workspa
     acceptWorkspaceInvitation(targetId, "wrong@flash-orbit.test", token, prisma),
     WorkspaceAuthorizationError,
   );
-  await acceptWorkspaceInvitation(targetId, `${targetId}@flash-orbit.test`, token, prisma);
+  const acceptances = await Promise.allSettled([
+    acceptWorkspaceInvitation(targetId, `${targetId}@flash-orbit.test`, token, prisma),
+    acceptWorkspaceInvitation(targetId, `${targetId}@flash-orbit.test`, token, prisma),
+  ]);
+  assert.equal(acceptances.filter((result) => result.status === "fulfilled").length, 1);
+  assert.equal(acceptances.filter((result) => result.status === "rejected").length, 1);
   const membership = await prisma.membership.findUnique({
     where: { userId_workspaceId: { userId: targetId, workspaceId: owner.id } },
   });
@@ -58,6 +74,10 @@ test("invitations authorize roles, require matching email, and add cross-workspa
   assert.equal((await prisma.user.findUnique({ where: { id: targetId } }))?.workspaceId, owner.id);
   assert.equal((await prisma.workspaceInvitation.findUnique({ where: { id: invite.id } }))?.status, "ACCEPTED");
   assert.equal((await prisma.membership.count({ where: { userId: targetId, status: "ACTIVE" } })), 2);
+  const pending = await createWorkspaceInvitation(ownerId, owner.slug, `pending-${suffix}@flash-orbit.test`, "STAFF", prisma, async () => {});
+  assert.equal((await listWorkspaceInvitations(ownerId, owner.slug, prisma)).length, 1);
+  await revokeWorkspaceInvitation(ownerId, owner.slug, pending.id, prisma);
+  assert.equal((await listWorkspaceInvitations(ownerId, owner.slug, prisma)).length, 0);
 });
 
 test("settings and member removal enforce workspace role boundaries and write audit events", async (context) => {
@@ -98,13 +118,16 @@ test("settings and member removal enforce workspace role boundaries and write au
     updateWorkspaceSettings(ownerId, "another-tenant", {
       name: "Cross Tenant", country: "NG", currency: "NGN", timezone: "Africa/Lagos",
     }, prisma),
-    WorkspaceAuthorizationError,
+    WorkspaceNotFoundError,
   );
-  const operations = await getWorkspaceOperations(staffId, workspace.slug, prisma);
-  assert.equal(operations.workspace.name, "Updated Store");
-  assert.ok(operations.subscription.entitlements);
-  assert.equal(operations.usage.length, 3);
-  assert.equal(operations.auditLogs.length, 0);
+  const staffOperations = await getWorkspaceOperations(staffId, workspace.slug, prisma);
+  assert.equal(staffOperations.workspace.name, "Updated Store");
+  assert.equal(staffOperations.subscription, null);
+  assert.equal(staffOperations.usage.length, 3);
+  assert.equal(staffOperations.auditLogs.length, 0);
+  const ownerOperations = await getWorkspaceOperations(ownerId, workspace.slug, prisma);
+  assert.ok(ownerOperations.subscription?.entitlements);
+  assert.ok(ownerOperations.auditLogs.some((entry) => entry.action === "workspace.settings_updated"));
   await removeWorkspaceMember(ownerId, workspace.slug, staffId, prisma);
   assert.equal((await prisma.membership.findUnique({
     where: { userId_workspaceId: { userId: staffId, workspaceId: workspace.id } },

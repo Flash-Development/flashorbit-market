@@ -35,6 +35,19 @@ export async function acceptWorkspaceInvitation(
       "SELECT pg_advisory_xact_lock(hashtextextended($1, 0))",
       `${invitation.workspaceId}:${invitation.email}`,
     );
+    const currentInvitation = await tx.workspaceInvitation.findUnique({
+      where: { tokenHash },
+    });
+    if (!currentInvitation || currentInvitation.status !== "PENDING") {
+      throw new WorkspaceInputError("Invitation is invalid or no longer active.");
+    }
+    if (currentInvitation.expiresAt <= new Date()) {
+      await tx.workspaceInvitation.update({
+        where: { id: currentInvitation.id },
+        data: { status: "EXPIRED" },
+      });
+      return { expired: true as const };
+    }
     const user = await tx.user.findUnique({ where: { id: userId } });
     if (!user || user.status !== "ACTIVE") throw new WorkspaceAuthorizationError();
     const existing = await tx.membership.findUnique({
