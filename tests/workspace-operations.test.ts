@@ -90,6 +90,61 @@ test("settings and member removal enforce workspace role boundaries and write au
     { name: "Settings Store", slug: `settings-${suffix}` },
     prisma,
   );
+  const activeProduct = await prisma.product.create({
+    data: {
+      workspaceId: workspace.id,
+      name: "Active Product",
+      slug: `active-product-${suffix}`,
+      basePrice: "100.00",
+      status: "ACTIVE",
+    },
+  });
+  const draftProduct = await prisma.product.create({
+    data: {
+      workspaceId: workspace.id,
+      name: "Draft Product",
+      slug: `draft-product-${suffix}`,
+      basePrice: "200.00",
+      status: "DRAFT",
+    },
+  });
+  const archivedProduct = await prisma.product.create({
+    data: {
+      workspaceId: workspace.id,
+      name: "Archived Product",
+      slug: `archived-product-${suffix}`,
+      basePrice: "300.00",
+      status: "ARCHIVED",
+    },
+  });
+  await prisma.productVariant.createMany({
+    data: [
+      {
+        workspaceId: workspace.id,
+        productId: activeProduct.id,
+        name: "Active Variant",
+        sku: `active-${suffix}`,
+        price: "100.00",
+        status: "ACTIVE",
+      },
+      {
+        workspaceId: workspace.id,
+        productId: draftProduct.id,
+        name: "Draft Variant",
+        sku: `draft-${suffix}`,
+        price: "200.00",
+        status: "DRAFT",
+      },
+      {
+        workspaceId: workspace.id,
+        productId: archivedProduct.id,
+        name: "Archived Variant",
+        sku: `archived-${suffix}`,
+        price: "300.00",
+        status: "ARCHIVED",
+      },
+    ],
+  });
   await prisma.user.create({
     data: { id: staffId, email: `${staffId}@flash-orbit.test` },
   });
@@ -125,6 +180,10 @@ test("settings and member removal enforce workspace role boundaries and write au
   assert.equal(staffOperations.subscription, null);
   assert.equal(staffOperations.usage.length, 3);
   assert.equal(staffOperations.auditLogs.length, 0);
+  assert.deepEqual(
+    Object.fromEntries(staffOperations.usage.map(({ metric, quantity }) => [metric, quantity])),
+    { ACTIVE_MEMBERS: 2, ACTIVE_PRODUCTS: 1, ACTIVE_VARIANTS: 1 },
+  );
   const ownerOperations = await getWorkspaceOperations(ownerId, workspace.slug, prisma);
   assert.ok(ownerOperations.subscription?.entitlements);
   assert.ok(ownerOperations.auditLogs.some((entry) => entry.action === "workspace.settings_updated"));

@@ -1,7 +1,7 @@
 import "server-only";
 import { NextResponse } from "next/server";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
-import { getAuthenticatedWorkspaceContext } from "@/lib/workspaces/onboarding";
+import { getActiveWorkspaceContext } from "@/lib/workspaces/onboarding";
 import { isTrustedRequestOrigin } from "@/lib/auth/trusted-origins";
 import {
   CatalogAuthorizationError,
@@ -13,11 +13,11 @@ export async function getCatalogContext(request: Request, requireOrigin = true) 
   if (requireOrigin && !isTrustedRequestOrigin(request.headers.get("origin"))) return null;
   const authenticated = await requireAuthenticatedUser();
   if (!authenticated) return null;
-  const workspaces = await getAuthenticatedWorkspaceContext(authenticated.localUser.id);
-  if (workspaces.length === 0) return null;
+  const workspace = await getActiveWorkspaceContext(authenticated.localUser.id);
+  if (!workspace) return null;
   return {
     userId: authenticated.localUser.id,
-    workspace: workspaces[0],
+    workspace,
   };
 }
 

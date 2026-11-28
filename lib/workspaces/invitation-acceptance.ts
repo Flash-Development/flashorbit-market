@@ -66,10 +66,13 @@ export async function acceptWorkspaceInvitation(
         status: "ACTIVE",
       },
     });
-    await tx.workspaceInvitation.update({
-      where: { id: invitation.id },
+    const accepted = await tx.workspaceInvitation.updateMany({
+      where: { id: invitation.id, status: "PENDING" },
       data: { status: "ACCEPTED", acceptedAt: new Date() },
     });
+    if (accepted.count !== 1) {
+      throw new WorkspaceInputError("Invitation is invalid or no longer active.");
+    }
     await tx.user.update({
       where: { id: userId },
       data: { workspaceId: invitation.workspaceId },

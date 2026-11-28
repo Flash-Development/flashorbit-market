@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
 import { isTrustedRequestOrigin } from "@/lib/auth/trusted-origins";
 import { prisma } from "@/lib/db/prisma";
-import { getAuthenticatedWorkspaceContext } from "@/lib/workspaces/onboarding";
+import {
+  getAuthenticatedWorkspaceContext,
+  selectActiveWorkspaceContext,
+} from "@/lib/workspaces/onboarding";
 
 export async function GET() {
   const authenticated = await requireAuthenticatedUser();
@@ -14,8 +17,9 @@ export async function GET() {
     }),
     getAuthenticatedWorkspaceContext(authenticated.localUser.id),
   ]);
+  const activeWorkspace = selectActiveWorkspaceContext(user?.workspaceId, workspaces);
   return NextResponse.json({
-    activeWorkspaceId: user?.workspaceId ?? workspaces[0]?.id ?? null,
+    activeWorkspaceId: activeWorkspace?.id ?? null,
     workspaces: workspaces.map(({ id, name, slug, memberships }) => ({
       id,
       name,

@@ -106,19 +106,25 @@ export async function createWorkspaceInvitation(
     });
   } catch (error) {
     await client.$transaction(async (tx) => {
-      await tx.workspaceInvitation.update({
-        where: { id: invitation.id },
+      await tx.$executeRawUnsafe(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1, 0))",
+        invitation.tokenHash,
+      );
+      const revoked = await tx.workspaceInvitation.updateMany({
+        where: { id: invitation.id, status: "PENDING" },
         data: { status: "REVOKED" },
       });
-      await tx.auditLog.create({
-        data: {
-          workspaceId: workspace.id,
-          actorUserId,
-          action: "invitation.delivery_failed",
-          targetType: "invitation",
-          targetId: invitation.id,
-        },
-      });
+      if (revoked.count === 1) {
+        await tx.auditLog.create({
+          data: {
+            workspaceId: workspace.id,
+            actorUserId,
+            action: "invitation.delivery_failed",
+            targetType: "invitation",
+            targetId: invitation.id,
+          },
+        });
+      }
     });
     throw error;
   }
@@ -164,36 +170,52 @@ export async function revokeWorkspaceInvitation(
     if (!invitation || invitation.status !== "PENDING") {
       throw new WorkspaceInputError("Invitation is not pending.");
     }
-    if (invitation.expiresAt <= new Date()) {
-      await tx.workspaceInvitation.update({
-        where: { id: invitation.id },
+    await tx.$executeRawUnsafe(
+      "SELECT pg_advisory_xact_lock(hashtextextended($1, 0))",
+      invitation.tokenHash,
+    );
+    const currentInvitation = await tx.workspaceInvitation.findFirst({
+      where: { id: invitationId, workspaceId: workspace.id },
+    });
+    if (!currentInvitation || currentInvitation.status !== "PENDING") {
+      throw new WorkspaceInputError("Invitation is not pending.");
+    }
+    if (currentInvitation.expiresAt <= new Date()) {
+      const expired = await tx.workspaceInvitation.updateMany({
+        where: { id: currentInvitation.id, status: "PENDING" },
         data: { status: "EXPIRED" },
       });
+      if (expired.count !== 1) throw new WorkspaceInputError("Invitation is not pending.");
       await tx.auditLog.create({
         data: {
           workspaceId: workspace.id,
           actorUserId,
           action: "invitation.expired",
           targetType: "invitation",
-          targetId: invitation.id,
+          targetId: currentInvitation.id,
         },
       });
       return { expired: true as const };
     }
-    const updated = await tx.workspaceInvitation.update({
-      where: { id: invitation.id },
+    const updated = await tx.workspaceInvitation.updateMany({
+      where: { id: currentInvitation.id, status: "PENDING" },
       data: { status: "REVOKED" },
     });
+    if (updated.count !== 1) throw new WorkspaceInputError("Invitation is not pending.");
     await tx.auditLog.create({
       data: {
         workspaceId: workspace.id,
         actorUserId,
         action: "invitation.revoked",
         targetType: "invitation",
-        targetId: invitation.id,
+        targetId: currentInvitation.id,
       },
     });
-    return { expired: false as const, invitation: updated };
+    const revokedInvitation = await tx.workspaceInvitation.findUnique({
+      where: { id: currentInvitation.id },
+    });
+    if (!revokedInvitation) throw new WorkspaceInputError("Invitation is not pending.");
+    return { expired: false as const, invitation: revokedInvitation };
   });
   if (result.expired) throw new WorkspaceInputError("Invitation has expired.");
   return result.invitation;

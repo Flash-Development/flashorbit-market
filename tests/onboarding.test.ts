@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { assertAvailableWorkspaceSlug } from "../lib/workspaces/slugs";
-import { createOnboardingWorkspace, getAuthenticatedWorkspaceContext } from "../lib/workspaces/onboarding";
+import {
+  createOnboardingWorkspace,
+  getActiveWorkspaceContext,
+  getAuthenticatedWorkspaceContext,
+  recoverStaleWorkspaceSelection,
+} from "../lib/workspaces/onboarding";
 import { testClient } from "./test-client";
 
 test("reserved slug rejection happens before onboarding writes", () => {
@@ -81,6 +86,81 @@ test("createWorkspace rejects a second workspace for the same principal", async 
   const workspaces = await getAuthenticatedWorkspaceContext(principal.userId);
   assert.equal(workspaces.length, 1);
   await prisma.workspace.delete({ where: { id: workspaces[0].id } });
+});
+
+test("active workspace context follows the selected membership rather than creation order", async (context) => {
+  const prisma = testClient();
+  const suffix = crypto.randomUUID().slice(0, 8);
+  const firstUserId = `active-first-${suffix}`;
+  const secondUserId = `active-second-${suffix}`;
+  const first = await createOnboardingWorkspace(
+    firstUserId,
+    `${firstUserId}@flash-orbit.test`,
+    "First Active Context",
+    `first-active-${suffix}`,
+  );
+  const second = await createOnboardingWorkspace(
+    secondUserId,
+    `${secondUserId}@flash-orbit.test`,
+    "Second Active Context",
+    `second-active-${suffix}`,
+  );
+  context.after(async () => {
+    await prisma.workspace.deleteMany({ where: { id: { in: [first.id, second.id] } } });
+    await prisma.user.deleteMany({ where: { id: { in: [firstUserId, secondUserId] } } });
+    await prisma.$disconnect();
+  });
+
+  await prisma.membership.create({
+    data: { userId: firstUserId, workspaceId: second.id, role: "STAFF" },
+  });
+  await prisma.user.update({
+    where: { id: firstUserId },
+    data: { workspaceId: second.id },
+  });
+
+  const memberships = await getAuthenticatedWorkspaceContext(firstUserId);
+  assert.equal(memberships[0]?.id, first.id);
+  assert.equal((await getActiveWorkspaceContext(firstUserId))?.id, second.id);
+
+  await prisma.membership.updateMany({
+    where: { userId: firstUserId, workspaceId: second.id },
+    data: { status: "REMOVED" },
+  });
+  assert.equal(await getActiveWorkspaceContext(firstUserId), null);
+  const remainingMemberships = await getAuthenticatedWorkspaceContext(firstUserId);
+  assert.equal(
+    (await recoverStaleWorkspaceSelection(firstUserId, remainingMemberships))?.id,
+    first.id,
+  );
+  assert.equal((await getActiveWorkspaceContext(firstUserId))?.id, first.id);
+
+  await prisma.membership.updateMany({
+    where: { userId: firstUserId, workspaceId: second.id },
+    data: { status: "ACTIVE" },
+  });
+  await prisma.user.update({
+    where: { id: firstUserId },
+    data: { workspaceId: second.id },
+  });
+  await prisma.workspace.update({
+    where: { id: second.id },
+    data: { status: "SUSPENDED" },
+  });
+  assert.equal(await getActiveWorkspaceContext(firstUserId), null);
+  assert.equal(
+    (await recoverStaleWorkspaceSelection(
+      firstUserId,
+      await getAuthenticatedWorkspaceContext(firstUserId),
+    ))?.id,
+    first.id,
+  );
+
+  await prisma.user.update({
+    where: { id: firstUserId },
+    data: { workspaceId: null },
+  });
+  assert.equal((await getActiveWorkspaceContext(firstUserId))?.id, first.id);
 });
 
 test("concurrent workspace creation is reduced to one result", async (context) => {

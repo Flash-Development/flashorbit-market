@@ -38,8 +38,8 @@ export async function getWorkspaceOperations(
   periodStart.setUTCHours(0, 0, 0, 0);
   const [activeMembers, products, variants] = await Promise.all([
     client.membership.count({ where: { workspaceId: workspace.id, status: "ACTIVE" } }),
-    client.product.count({ where: { workspaceId: workspace.id, status: { not: "ARCHIVED" } } }),
-    client.productVariant.count({ where: { workspaceId: workspace.id, status: { not: "ARCHIVED" } } }),
+    client.product.count({ where: { workspaceId: workspace.id, status: "ACTIVE" } }),
+    client.productVariant.count({ where: { workspaceId: workspace.id, status: "ACTIVE" } }),
   ]);
   const counts = [
     ["ACTIVE_MEMBERS", activeMembers],

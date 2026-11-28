@@ -1,6 +1,10 @@
 import { redirect } from "next/navigation";
 import { requireAuthenticatedUser } from "@/lib/auth/session";
-import { getAuthenticatedWorkspaceContext } from "@/lib/workspaces/onboarding";
+import {
+  getActiveWorkspaceContext,
+  getAuthenticatedWorkspaceContext,
+  recoverStaleWorkspaceSelection,
+} from "@/lib/workspaces/onboarding";
 import { OnboardingForm } from "@/components/auth/onboarding-form";
 import { createLogger } from "@/lib/logging/logger";
 
@@ -15,6 +19,10 @@ export default async function OnboardingPage() {
     authenticated.localUser.id,
   );
   if (workspaces.length > 0) {
+    const activeWorkspace = await getActiveWorkspaceContext(authenticated.localUser.id);
+    if (!activeWorkspace) {
+      await recoverStaleWorkspaceSelection(authenticated.localUser.id, workspaces);
+    }
     logger.info("Onboarding skipped because a workspace already exists");
     redirect("/dashboard");
   }

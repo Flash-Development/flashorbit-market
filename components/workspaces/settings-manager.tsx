@@ -21,6 +21,16 @@ type AuditEntry = {
 };
 type EntitlementFeatures = { features?: unknown };
 
+const usageDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  dateStyle: "short",
+  timeZone: "UTC",
+});
+const auditDateTimeFormatter = new Intl.DateTimeFormat("en-GB", {
+  dateStyle: "short",
+  timeStyle: "short",
+  timeZone: "UTC",
+});
+
 export function WorkspaceSettingsManager({
   workspace: initialWorkspace,
   subscription,
@@ -109,7 +119,7 @@ export function WorkspaceSettingsManager({
           <p className="workspace-history-row" key={entry.id}>
             <span>{entry.metric.replaceAll("_", " ")}</span>
             <strong>{entry.quantity}</strong>
-            <time dateTime={new Date(entry.periodStart).toISOString()}>{new Date(entry.periodStart).toLocaleDateString()}</time>
+            <time dateTime={new Date(entry.periodStart).toISOString()}>{usageDateFormatter.format(new Date(entry.periodStart))}</time>
           </p>
         )) : <p>No usage snapshots yet.</p>}
       </section>
@@ -119,7 +129,7 @@ export function WorkspaceSettingsManager({
           {auditLogs.length ? auditLogs.map((entry) => (
             <p className="workspace-history-row" key={entry.id}>
               <span>{entry.actorName}: {entry.action.replaceAll(".", " ")}</span>
-              <time dateTime={new Date(entry.createdAt).toISOString()}>{new Date(entry.createdAt).toLocaleString()}</time>
+              <time dateTime={new Date(entry.createdAt).toISOString()}>{auditDateTimeFormatter.format(new Date(entry.createdAt))}</time>
             </p>
           )) : <p>No workspace activity recorded yet.</p>}
         </section>

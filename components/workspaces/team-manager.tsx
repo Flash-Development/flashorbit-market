@@ -3,6 +3,11 @@
 import { useState, type FormEvent } from "react";
 import type { MembershipRole } from "@/generated/prisma/client";
 
+const invitationDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  dateStyle: "short",
+  timeZone: "UTC",
+});
+
 type Member = {
   id: string;
   userId: string;
@@ -58,14 +63,15 @@ export function TeamManager({
 
   async function invite(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
     setPending(true);
     setError("");
     setNotice("");
     try {
-      const data = Object.fromEntries(new FormData(event.currentTarget));
+      const data = Object.fromEntries(new FormData(form));
       const result = await request(`${base}/invitations`, "POST", data);
       setInvitations((current) => [result.invitation, ...current]);
-      event.currentTarget.reset();
+      form.reset();
       setNotice("Invitation sent.");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Invitation failed.");
@@ -147,7 +153,7 @@ export function TeamManager({
         <h2 id="pending-invitations-heading">Pending invitations</h2>
         {invitations.length ? invitations.map((invitation) => (
           <article className="workspace-member-row" key={invitation.id}>
-            <div><strong>{invitation.email}</strong><small>{invitation.role} · Expires {new Date(invitation.expiresAt).toLocaleDateString()}</small></div>
+            <div><strong>{invitation.email}</strong><small>{invitation.role} · Expires {invitationDateFormatter.format(new Date(invitation.expiresAt))}</small></div>
             {canInvite ? <button type="button" className="workspace-secondary-button" onClick={() => void revokeInvitation(invitation.id)}>Revoke</button> : null}
           </article>
         )) : <p>No pending invitations.</p>}
